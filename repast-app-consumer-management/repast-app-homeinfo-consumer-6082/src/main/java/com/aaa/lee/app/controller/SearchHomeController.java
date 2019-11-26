@@ -2,6 +2,8 @@ package com.aaa.lee.app.controller;
 
 import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.base.ResultData;
+import com.aaa.lee.app.domain.PmsCommentRe;
+import com.aaa.lee.app.domain.PmsProduct;
 import com.aaa.lee.app.domain.Product;
 import com.aaa.lee.app.service.IRepastService;
 import io.swagger.annotations.Api;
@@ -31,4 +33,60 @@ public class SearchHomeController extends BaseController {
        }
      return failed("搜索失败");
     }
+
+
+    /**
+     * 根据id查到商品上架下架状态
+     * @param brandId
+     * @return
+     */
+    @GetMapping("/selectAll")
+    @ApiOperation(value = "查询商品类型信息", notes = "执行查询商品类型操作，查询上架和未删除状态的商品")
+    public ResultData getSelectAll(Long brandId) {
+        List<PmsProduct> getSelectAll = repastService.getSelectAll(brandId);
+
+
+        if (getSelectAll.size() > 0) {
+            return success(getSelectAll);
+        } else {
+            return failed();
+        }
+    }
+
+    /**
+     * 更多搜索展示搜索过历史全部
+     * @param id
+     * @return
+     */
+    @GetMapping("/searchAll")
+    @ApiOperation(value = "查询搜索历史", notes = "查询搜索过的信息历史")
+    public ResultData searchAll(Long id){
+        List<PmsCommentRe> pmsCommentRes = repastService.searchAll(id);
+        if (pmsCommentRes.size() > 0) {
+            return success(pmsCommentRes);
+        } else {
+            return failed();
+        }
+    }
+
+
+    /**
+     * 在搜索框下展示以往搜索过的内容，展示一两条
+     * @param id
+     * @return
+     */
+    @GetMapping("/showAll")
+    @ApiOperation(value = "搜索框下展示的历史搜索", notes = "搜索框下展示的历史搜索，默认显示几条")
+    public  ResultData showAll(Long id){
+        List<PmsCommentRe> all = repastService.showAll(id);
+        if (all.size() > 0){
+            return success(all);
+        }else {
+            return  failed();
+        }
+
+    }
+
+
+
 }

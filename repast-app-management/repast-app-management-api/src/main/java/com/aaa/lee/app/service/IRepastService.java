@@ -114,4 +114,33 @@ public interface IRepastService {
      */
     @GetMapping("/getdeleteHistorySearch")
     Boolean getdeleteHistorySearch();
+
+
+
+
+
+
+    /**
+     *      通过id查询商品上架下架和删除为删除的商品状态（商品属性、状态）
+     **/
+    @GetMapping("/selectAll")
+    List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId);
+
+    /**
+     *      通过id查询查询以往搜索过的搜索历史（更多搜索历史）
+     **/
+    @GetMapping("/searchAll")
+    List<PmsCommentRe> searchAll(@RequestParam("id") Long id);
+
+
+
+    /**
+     *      通过id查询以往搜索过的搜索历史在搜索框下展示的以往的搜索历史展示一两条（搜索的一两条展示）
+     **/
+    @GetMapping("/showAll")
+    List<PmsCommentRe> showAll(@RequestParam("id") Long id);
+
+
+
+
 }
