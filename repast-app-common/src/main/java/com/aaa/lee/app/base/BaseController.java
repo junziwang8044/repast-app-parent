@@ -1,6 +1,7 @@
 package com.aaa.lee.app.base;
 
 import com.aaa.lee.app.status.LoginStatus;
+import com.aaa.lee.app.status.StatusEnum;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -104,6 +105,60 @@ public class BaseController {
         ResultData resultData = new ResultData();
         resultData.setCode(LoginStatus.LOGIN_FAILED.getCode());
         resultData.setMsg(msg);
+        return resultData;
+    }
+    /**
+     *      操作成功，使用系统消息
+     * @param
+     **/
+    protected ResultData operationSuccess() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.SUCCESS.getCode());
+        resultData.setMsg(StatusEnum.SUCCESS.getMsg());
+        return resultData;
+    }
+
+    /**
+     *      操作成功，自定义返回消息
+     **/
+    protected ResultData operationSuccess(String msg) {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.SUCCESS.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
+
+    /**
+     *      操作成功，使用系统消息，自定义返回值
+     **/
+    protected ResultData operationSuccess(Object data) {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.SUCCESS.getCode());
+        resultData.setMsg(StatusEnum.SUCCESS.getMsg());
+        resultData.setData(data);
+        return resultData;
+    }
+
+    /**
+     *      操作成功，自定义消息，自定义返回值
+     * @param
+     **/
+    protected ResultData operationSuccess(String msg, Object data) {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.SUCCESS.getCode());
+        resultData.setMsg(msg);
+        resultData.setData(data);
+        return resultData;
+    }
+
+    /**
+     *      操作失败，返回系统消息
+     * @param []
+     **/
+    protected ResultData operationFailed() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.FAILED.getCode());
+        resultData.setMsg(StatusEnum.FAILED.getMsg());
         return resultData;
     }
 

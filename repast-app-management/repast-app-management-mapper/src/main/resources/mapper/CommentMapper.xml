@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.lee.app.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.lee.app.domain.Comment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="member_ip" property="memberIp" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="show_status" property="showStatus" jdbcType="INTEGER" />
+    <result column="product_attribute" property="productAttribute" jdbcType="VARCHAR" />
+    <result column="collect_couont" property="collectCouont" jdbcType="INTEGER" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="pics" property="pics" jdbcType="VARCHAR" />
+    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
+    <result column="replay_count" property="replayCount" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <select id="selectCommentByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.Comment" >
+    select id, shop_id, order_id, product_id, member_nick_name, product_name, star, member_ip,
+    create_time, show_status, product_attribute, collect_couont, read_count, pics, member_icon,
+    replay_count, content
+    from pms_comment where product_id=#{productId} and show_status = 1
+  </select>
+  <select id="selectTwoByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.Comment">
+    select id, shop_id, order_id, product_id, member_nick_name, product_name, star, member_ip,
+    create_time, show_status, product_attribute, collect_couont, read_count, pics, member_icon,
+    replay_count, content
+    from pms_comment where product_id=#{productId} and show_status = 1 order by read_count desc limit 0,2
+  </select>
+</mapper>

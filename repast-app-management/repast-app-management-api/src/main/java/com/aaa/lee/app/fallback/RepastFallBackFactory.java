@@ -2,6 +2,7 @@ package com.aaa.lee.app.fallback;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.service.IRepastService;
+import com.aaa.lee.app.vo.ProductParam;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
@@ -86,6 +87,60 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public List<PmsCommentRe> showAll(Long id) {
                 System.out.println("在搜索框下展示以往搜索过的内容，展示一两条");
+                return null;
+            }
+
+            @Override
+            public Product getProductById(Long id) {
+                System.out.println("商品详情展示熔断");
+                return null;
+            }
+
+            @Override
+            public List<Comment> getCommentByProductId(Long id) {
+                System.out.println("商品评论展示熔断");
+                return null;
+            }
+
+            @Override
+            public List<Product> getLikePro(Long id) {
+                System.out.println("类似商品展示熔断");
+                return null;
+            }
+
+            @Override
+            public List<Comment> selectTwoByProductId(Long id) {
+                System.out.println("商品两评论展示熔断");
+                return null;
+            }
+
+            @Override
+            public List<Product> getRecommandByShopId(Long shopId) {
+                System.out.println("店铺推荐熔断");
+                return null;
+            }
+
+            @Override
+            public Integer insertReplay(Replay replay) {
+                System.out.println("回复评论熔断");
+                return null;
+            }
+
+            @Override
+            public List<ProductPic> selectPicByShopId(Long id) {
+                System.out.println("查询商店图片熔断");
+                return null;
+            }
+
+            @Override
+            public List<ProductParam> selectProductParam(Long id) {
+                System.out.println("商品参数熔断");
+                return null;
+            }
+
+            @Override
+            public List<ProductPic> selectAlbumByProductId(Long id) {
+                System.out.println("商品图片熔断");
                 return null;
             }
 

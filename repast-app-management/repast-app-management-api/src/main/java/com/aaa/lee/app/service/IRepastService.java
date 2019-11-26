@@ -2,6 +2,7 @@ package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.fallback.RepastFallBackFactory;
+import com.aaa.lee.app.vo.ProductParam;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -139,6 +140,79 @@ public interface IRepastService {
      **/
     @GetMapping("/showAll")
     List<PmsCommentRe> showAll(@RequestParam("id") Long id);
+
+    /**
+     * 通过商品id查询商品详情
+     * @param id
+     * @return
+     */
+    @GetMapping("/getProductById")
+    Product getProductById(@RequestParam("id") Long id);
+
+    /**
+     * 根据商品id获取商品的评论
+     * @param id
+     * @return
+     */
+    @GetMapping("/getCommentByProductId")
+    List<Comment> getCommentByProductId(@RequestParam("id") Long id);
+
+    /**
+     * 根据商品id获取商品的类似推荐商品
+     * @param id
+     * @return
+     */
+    @GetMapping("/getLikePro")
+    List<Product> getLikePro(@RequestParam("id") Long id);
+
+    /**
+     * 根据商品id获取商品阅读量高的前两个评论
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectTwoByProductId")
+    List<Comment> selectTwoByProductId(@RequestParam("id") Long id);
+
+    /**
+     * 根据店铺id查询该店商品的推荐
+     * @param shopId
+     * @return
+     */
+    @GetMapping("/getRecommandByShopId")
+    List<Product> getRecommandByShopId(@RequestParam("shopId") Long shopId);
+
+    /**
+     * 添加评论回复
+     *
+     * @param replay
+     * @return
+     */
+    @PostMapping("/insertReplay")
+    Integer insertReplay(@RequestBody Replay replay);
+
+    /**
+     * 根据商品id查询图片列表
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectPicByShopId")
+    List<ProductPic> selectPicByShopId(@RequestParam("id") Long id);
+
+    /**
+     * 根据商品id查询商品参数
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectProductParam")
+    List<ProductParam> selectProductParam(@RequestParam("id") Long id);
+
+    /**
+     * 根据商品id查询商品的图片列表
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectAlbumByProductId")
+    List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id);
 
 
 
