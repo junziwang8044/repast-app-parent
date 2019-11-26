@@ -95,6 +95,16 @@ public class BaseController {
         return resultData;
     }
 
-    // TODO 该类未完成，自行完成剩余的方法
+    /**
+     * 登录失败，返回自定义消息
+     * @param msg
+     * @return
+     */
+    protected ResultData failed(String msg) {
+        ResultData resultData = new ResultData();
+        resultData.setCode(LoginStatus.LOGIN_FAILED.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
 
 }

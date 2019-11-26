@@ -35,7 +35,6 @@ public class HotProductController extends BaseController {
     public ResultData getHotProduct(Long shopId){
         List<Product> hotProduct = repastService.getHotProduct(shopId);
         if (null != hotProduct){
-            System.out.println("SDKFH");
             return success(hotProduct);
         }
         return null;

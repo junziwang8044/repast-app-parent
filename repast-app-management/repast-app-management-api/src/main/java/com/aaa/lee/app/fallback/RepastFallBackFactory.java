@@ -58,6 +58,19 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("测试上平类目属性列表");
                 return null;
             }
+
+            @Override
+            public List<Product> getSearchHome(String name) {
+                System.out.println("测试搜索首页商品");
+                return null;
+            }
+
+            @Override
+            public Boolean getdeleteHistorySearch() {
+                System.out.println("删除某个用户的历史搜索");
+                return false;
+            }
+
         };
         return repastService;
     }

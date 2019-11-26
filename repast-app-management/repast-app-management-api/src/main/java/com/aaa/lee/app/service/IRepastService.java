@@ -98,4 +98,20 @@ public interface IRepastService {
      */
     @GetMapping("/getPac")
     List<ProductCategory> getPacByProductId(@RequestParam("shopId") Long shopId);
+
+    /**
+     * 查询商品
+     * @param name
+     * @return
+     */
+    @GetMapping("/getSearchHome")
+    List<Product> getSearchHome(@RequestParam("name") String name);
+
+    /**
+     * 删除某个用户的历史搜索
+     * @param
+     * @return
+     */
+    @GetMapping("/getdeleteHistorySearch")
+    Boolean getdeleteHistorySearch();
 }
