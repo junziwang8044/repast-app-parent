@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.List;
+
 /**
  * @Company AAA软件教育
  * @Author Seven Lee
@@ -22,5 +24,13 @@ public class ProductCatService extends BaseService<ProductCat> {
     @Override
     public Mapper<ProductCat> getMapper() {
         return productCatMapper;
+    }
+
+    public List<ProductCat> getCateByShopId(Long shopId){
+        List<ProductCat> productCats = productCatMapper.getCateByShopId(shopId);
+        if (productCats.size()>0){
+            return productCats;
+        }
+        return null;
     }
 }

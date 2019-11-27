@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.lee.app.mapper.ProductHotBySaleMapper">
+    <resultMap id="BaseResultMap" type="com.aaa.lee.app.vo.ProductHotBySale">
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="open_time" property="openTime" jdbcType="VARCHAR"/>
+        <result column="assess" property="assess" jdbcType="VARCHAR"/>
+        <result column="product_sn" property="productSn" jdbcType="VARCHAR"/>
+        <result column="original_price" property="originalPrice" jdbcType="DECIMAL"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+        <result column="promotion_price" property="promotionPrice" jdbcType="DECIMAL"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="pic" property="pic" jdbcType="VARCHAR"/>
+        <result column="promotion_start_time" property="promotionStartTime" jdbcType="TIMESTAMP"/>
+        <result column="gift_point" property="giftPoint" jdbcType="INTEGER"/>
+        <result column="stock" property="stock" jdbcType="INTEGER"/>
+        <result column="images" property="images" jdbcType="VARCHAR"/>
+        <result column="name2" property="name2" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="pic_count" property="picCount" jdbcType="INTEGER"/>
+        <result column="des" property="des" jdbcType="VARCHAR"/>
+        <result column="pic2" property="pic2" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="DECIMAL"/>
+
+
+    </resultMap>
+    <select id="getHotProduct" resultMap="BaseResultMap" parameterType="long">
+        SELECT
+	a.description,a.`name`,a.original_price,a.pic,a.product_sn,a.promotion_start_time,a.weight,a.promotion_price,a.gift_point,a.stock,
+s.address,s.assess,s.images,s.open_time,m.`name` name2,m.pic_count,m.description des,u.pic pic2
+        FROM
+	pms_product a
+         INNER JOIN ums_shop_information s ON (a.shop_id = s.id)
+         INNER JOIN pms_product_attribute_category c ON(a.product_attribute_category_id=c.id)
+         INNER JOIN pms_album m ON(a.album_id=m.id)
+         INNER JOIN pms_album_pic u ON m.id=u.album_id
+         WHERE a.shop_id=#{shopId}
+         ORDER BY
+	a.sale
+        AND a.delete_status = 0
+        AND a.publish_status = 1 ASC
+    </select>
+</mapper>

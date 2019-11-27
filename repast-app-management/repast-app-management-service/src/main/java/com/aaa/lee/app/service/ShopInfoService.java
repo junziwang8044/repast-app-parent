@@ -41,6 +41,25 @@ public class ShopInfoService extends BaseService<ShopInfo> {
         return shopInfoByShopId;
     }
 
-
+    /**
+     * 点击店铺，获取店铺信息
+     */
+    public List<ShopInfo> touchShopByShopId(Long shopId){
+        List<ShopInfo> touchshopInfos = shopInfoMapper.touchShopByShopId(shopId);
+        return touchshopInfos;
+    }
+    /**
+     * @author Seven Lee
+     * @description
+     *      通过店铺主键查询店铺信息(包装类型)
+     * @param [shopId]
+     * @date 2019/11/21
+     * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
+     * @throws
+     **/
+    public ShopInfoVo getshopmsgById(Long shopId) {
+        ShopInfoVo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
+        return shopInfoByShopId;
+    }
 
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.lee.app.mapper.HomeProductAdvertiseMapper">
+    <resultMap id="BaseResultMap" type="com.aaa.lee.app.vo.HomeProductAdvertiseVo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="name" property="shopName" jdbcType="VARCHAR"/>
+        <result column="descrition" property="descrition" jdbcType="VARCHAR"/>
+        <result column="max_count" property="maxCount" jdbcType="INTEGER"/>
+        <result column="pic" property="pic" jdbcType="VARCHAR"/>
+        <result column="name" property="positionName" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="click_count" property="clickCount" jdbcType="INTEGER"/>
+        <result column="order_count" property="orderCount" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getAdvertiseList" resultMap="BaseResultMap">
+        SELECT
+        s.`name`,d.order_count,d.start_time,d.end_time,d.click_count,d.pic,d.sort,d.`status`,d.url,p.descrition,p.max_count,p.`name`,p.type
+        from sms_advertise d
+        INNER JOIN sms_advertise_position p on (d.position_id=p.id)
+        INNER JOIN ums_shop_information s ON (d.shop_id=s.id)
+        WHERE d.`status`=1
+  </select>
+
+</mapper>

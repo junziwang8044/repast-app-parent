@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.Column;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @Company AAA软件教育
@@ -31,5 +32,9 @@ public class ShopInfoVo implements Serializable {
     private Long facilityId;
     private String title;
     private String description;
+    private String qname;
+    private Integer platform;
+    private BigDecimal amount;
+    private Integer useType;
 
 }

@@ -10,4 +10,6 @@ public interface ShopInfoMapper extends Mapper<ShopInfo> {
 
     ShopInfoVo getShopInfoByShopId(Long shopId);
 
+    List<ShopInfo> touchShopByShopId(Long shopId);
+
 }
