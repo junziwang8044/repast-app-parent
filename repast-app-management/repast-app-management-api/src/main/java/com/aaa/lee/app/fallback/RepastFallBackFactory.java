@@ -143,6 +143,17 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
                 System.out.println("商品图片熔断");
                 return null;
             }
+            @Override
+            public List<ProductCatG> getCategoryByShopId1(Long shopId) {
+                System.out.println("测试获取商品类目熔断数据");
+                return null;
+            }
+
+            @Override
+            public List<ShopList> getShopList() {
+                System.out.println("测试获取所有商店信息进入熔断");
+                return null;
+            }
 
         };
         return repastService;

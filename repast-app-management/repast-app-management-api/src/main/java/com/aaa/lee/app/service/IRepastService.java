@@ -214,7 +214,16 @@ public interface IRepastService {
     @GetMapping("/selectAlbumByProductId")
     List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id);
 
-
+    /**
+     *通过商品的id获取类目的列表
+     */
+    @GetMapping("/getCatByShopId")
+    List<ProductCatG> getCategoryByShopId1(@RequestParam("shopId") Long shopId);
+    /**
+     * 查询出所有店铺的信息
+     */
+    @GetMapping("/getShopList")
+    List<ShopList> getShopList();
 
 
 }
