@@ -26,6 +26,7 @@ public class ShopListService extends BaseService<ShopList> {
      * @return
      */
     public List<ShopList> getShopList(){
+        System.out.println(324);
         List<ShopList> shopList = shopListMapper.getShopList();
         if(shopList.size()>0){
             return shopList;
