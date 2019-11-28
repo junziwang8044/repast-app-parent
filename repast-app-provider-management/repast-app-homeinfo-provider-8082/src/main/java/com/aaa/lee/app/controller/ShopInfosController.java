@@ -3,7 +3,9 @@ package com.aaa.lee.app.controller;
 import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.domain.ProductCat;
 import com.aaa.lee.app.domain.ShopInfo;
+import com.aaa.lee.app.domain.ShopInfoFacility;
 import com.aaa.lee.app.service.ProductCatService;
+import com.aaa.lee.app.service.ShopInfoFacilityService;
 import com.aaa.lee.app.service.ShopInfoService;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class ShopInfosController extends BaseController {
 
     @Autowired
     private ProductCatService productCatService;
+
+    @Autowired
+    private ShopInfoFacilityService shopInfoFacilityService;
 
     /**
      * 通过主键查询店铺信息
@@ -57,5 +62,22 @@ public class ShopInfosController extends BaseController {
     public List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId){
         List<ProductCat> cateByShopId = productCatService.getCateByShopId(shopId);
         return cateByShopId;
+    }
+    /**
+     * 通过店铺主键查询店铺内提供的服务
+     * @param shopId
+     * @return
+     */
+    @GetMapping("/getServerByShopId")
+    public List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId") Long shopId){
+        try {
+            List<ShopInfoFacility> serverByShopId = shopInfoFacilityService.getServerByShopId(shopId);
+            if (serverByShopId.size()>0){
+                return serverByShopId;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

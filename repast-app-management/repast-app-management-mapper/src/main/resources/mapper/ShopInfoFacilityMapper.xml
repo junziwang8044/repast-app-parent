@@ -11,4 +11,7 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="icon" property="icon" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="getServerByShopId" parameterType="long" resultMap="BaseResultMap">
+    select usf.id,usf.shop_id,usf.title,usf.description,usf.icon from ums_shop_facility usf where usf.shop_id = #{shopId}
+  </select>
 </mapper>

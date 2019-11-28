@@ -4,6 +4,7 @@ import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.base.ResultData;
 import com.aaa.lee.app.domain.ProductCat;
 import com.aaa.lee.app.domain.ShopInfo;
+import com.aaa.lee.app.domain.ShopInfoFacility;
 import com.aaa.lee.app.service.IRepastService;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import io.swagger.annotations.Api;
@@ -73,6 +74,21 @@ public class ShopInfosController extends BaseController {
         List<ProductCat> cateByShopId = repastService.getCateByShopId(shopId);
         if (null != cateByShopId){
             return success(cateByShopId);
+        }else {
+            return failed();
+        }
+    }
+    /**
+     * 通过店铺主键查询店铺内提供的服务
+     * @param shopId
+     * @return
+     */
+    @GetMapping("/getServerByShopId")
+    @ApiOperation(value = "店铺的服务",notes = "通过店铺的主键查询店铺的服务")
+    public ResultData getServerByShopId(@RequestParam("shopId") Long shopId){
+        List<ShopInfoFacility> serverByShopId = repastService.getServerByShopId(shopId);
+        if (null != serverByShopId){
+            return success(serverByShopId);
         }else {
             return failed();
         }

@@ -262,5 +262,12 @@ public interface IRepastService {
     @GetMapping("/getCateByShopId")
     List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId);
 
+    /**
+     * 通过店铺主键查询店铺内提供的服务
+     * @param shopId
+     * @return
+     */
+    @GetMapping("/getServerByShopId")
+    List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
 
 }
