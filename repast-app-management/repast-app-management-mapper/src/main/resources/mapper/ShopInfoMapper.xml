@@ -29,11 +29,10 @@
         <result column="contract_id" property="contractId" jdbcType="BIGINT"/>
     </resultMap>
 
-    <select id="getShopInfoByShopId" parameterType="long" resultType="com.aaa.lee.app.vo.ShopInfoVo">
+    <select id="getShopInfoByShopId" parameterType="long" resultType="com.aaa.lee.app.domain.ShopInfo">
         select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,usi.address,
-    usi.lng, usi.lat,usi.open_time openTime, usi.phone,usi.images, usf.id facilityId, usf.title, usf.description from ums_shop_information usi
-        inner join ums_shop_facility usf on usi.id = usf.shop_id
-    where usi.id = #{shopId}
+    usi.lng, usi.lat,usi.open_time openTime, usi.phone,usi.images,usi.`status`,usi.auth_start_time,usi.auth_long,usi.template_id,usi.business_license,usi.food_license,usi.sanitation_license,usi.assess,usi.contract_id  from ums_shop_information usi
+    where id = #{shopId}
   </select>
     <select id="touchShopByShopId" parameterType="long" resultType="com.aaa.lee.app.domain.ShopInfo">
     select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,

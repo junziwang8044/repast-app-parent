@@ -39,7 +39,7 @@ public class ShopInfosController extends BaseController {
      * @return
      */
     @GetMapping("/getshopmsgById")
-    public ShopInfoVo getshopmsgById(@RequestParam("shopId") Long shopId) {
+    public ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId) {
         return shopInfoService.getshopmsgById(shopId);
     }
 

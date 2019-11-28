@@ -5,6 +5,7 @@ import com.aaa.lee.app.base.ResultData;
 import com.aaa.lee.app.domain.PmsCommentRe;
 import com.aaa.lee.app.domain.PmsProduct;
 import com.aaa.lee.app.domain.Product;
+import com.aaa.lee.app.domain.SmsAdver;
 import com.aaa.lee.app.service.IRepastService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -86,7 +87,19 @@ public class SearchHomeController extends BaseController {
         }
 
     }
+    @GetMapping("/shopIdList")
+    @ApiOperation(value = "查询店铺广告图片", notes = "根据id店铺为1的全部查询出来")
+    public  ResultData shopIdList(Long shopId){
+        List<SmsAdver> smsAdvers = repastService.shopIdList(shopId);
+        if (smsAdvers.size() > 0){
+            return  success(smsAdvers);
+        }else {
 
+            return failed();
+        }
+
+
+    }
 
 
 }

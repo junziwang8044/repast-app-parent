@@ -6,7 +6,6 @@ import com.aaa.lee.app.domain.ProductCat;
 import com.aaa.lee.app.domain.ShopInfo;
 import com.aaa.lee.app.domain.ShopInfoFacility;
 import com.aaa.lee.app.service.IRepastService;
-import com.aaa.lee.app.vo.ShopInfoVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public class ShopInfosController extends BaseController {
     @GetMapping("/getshopmsgById")
     @ApiOperation(value = "商店信息", notes = "通过主键查询商家信息")
     public ResultData getshopmsgById(@RequestParam("shopId")Long shopId) {
-        ShopInfoVo shopList = repastService.getshopmsgById(shopId);
+        ShopInfo shopList = repastService.getshopmsgById(shopId);
         if (null!=shopList){
             return success(shopList);
         }else{

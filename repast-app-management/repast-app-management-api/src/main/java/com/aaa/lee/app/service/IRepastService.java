@@ -248,7 +248,7 @@ public interface IRepastService {
      * @throws
      **/
     @GetMapping("/getshopmsgById")
-    ShopInfoVo getshopmsgById(@RequestParam("shopId") Long shopId);
+    ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId);
 
     /**
      * 点击店铺获取店铺信息
@@ -269,5 +269,8 @@ public interface IRepastService {
      */
     @GetMapping("/getServerByShopId")
     List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
+
+    @GetMapping("/shopIdList")
+    List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
 
 }

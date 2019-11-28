@@ -3,7 +3,6 @@ package com.aaa.lee.app.service;
 import com.aaa.lee.app.base.BaseService;
 import com.aaa.lee.app.domain.ShopInfo;
 import com.aaa.lee.app.mapper.ShopInfoMapper;
-import com.aaa.lee.app.vo.ShopInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
@@ -36,8 +35,8 @@ public class ShopInfoService extends BaseService<ShopInfo> {
      * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
      * @throws 
     **/
-    public ShopInfoVo getShopInfoByShopId(Long shopId) {
-        ShopInfoVo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
+    public ShopInfo getShopInfoByShopId(Long shopId) {
+        ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
         return shopInfoByShopId;
     }
 
@@ -57,8 +56,8 @@ public class ShopInfoService extends BaseService<ShopInfo> {
      * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
      * @throws
      **/
-    public ShopInfoVo getshopmsgById(Long shopId) {
-        ShopInfoVo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
+    public ShopInfo getshopmsgById(Long shopId) {
+        ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
         return shopInfoByShopId;
     }
 
