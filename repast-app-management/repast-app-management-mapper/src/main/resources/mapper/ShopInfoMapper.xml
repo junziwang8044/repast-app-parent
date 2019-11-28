@@ -30,14 +30,14 @@
     </resultMap>
 
     <select id="getShopInfoByShopId" parameterType="long" resultType="com.aaa.lee.app.vo.ShopInfoVo">
-        select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,
-    usi.lng, usi.lat, usi.phone, usf.id facilityId, usf.title, usf.description from ums_shop_information usi
+        select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,usi.address,
+    usi.lng, usi.lat,usi.open_time openTime, usi.phone,usi.images, usf.id facilityId, usf.title, usf.description from ums_shop_information usi
         inner join ums_shop_facility usf on usi.id = usf.shop_id
     where usi.id = #{shopId}
   </select>
     <select id="touchShopByShopId" parameterType="long" resultType="com.aaa.lee.app.domain.ShopInfo">
     select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,
-    usi.lng, usi.lat, usi.phone,usi.business_license,usi.food_license,usi.sanitation_license from ums_shop_information usi
+    usi.lng, usi.lat, usi.phone,usi.business_license,usi.food_license,usi.sanitation_license from ums_shop_information usi where usi.id = #{shopId}
   </select>
 
 </mapper>

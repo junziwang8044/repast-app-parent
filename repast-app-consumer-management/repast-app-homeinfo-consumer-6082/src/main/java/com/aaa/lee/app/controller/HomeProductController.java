@@ -2,7 +2,7 @@ package com.aaa.lee.app.controller;
 
 import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.base.ResultData;
-import com.aaa.lee.app.service.IRepastHomeService;
+import com.aaa.lee.app.service.IRepastService;
 import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
 import com.aaa.lee.app.vo.ProductHotBySale;
 import io.swagger.annotations.Api;
@@ -24,7 +24,7 @@ import java.util.List;
 @Api(value = "商品",tags = "查询商品")
 public class HomeProductController extends BaseController {
     @Autowired
-    private IRepastHomeService repastService;
+    private IRepastService repastService;
 
     @GetMapping("/getAdvertiseList")
     @ApiOperation(value = "广告信息", notes = "查询广告信图片息")
@@ -45,7 +45,7 @@ public class HomeProductController extends BaseController {
     @GetMapping("/getHotProduct")
     @ApiOperation(value = "查询",notes = "查询人气商品")
     public ResultData getHotProduct(@RequestParam("shopId") Long shopId){
-        List<ProductHotBySale> hotProduct = repastService.getHotProduct(shopId);
+        List<ProductHotBySale> hotProduct = repastService.getHotProducts(shopId);
         if(null!=hotProduct){
             return success(hotProduct);
         }

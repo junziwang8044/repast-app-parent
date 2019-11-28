@@ -51,7 +51,7 @@
     where pp.delete_status = 0 and pp.publish_status = 1 and pss.stock > 0 and pp.shop_id = #{shopId}
   </select>
     <select id="selectAllHotProduct" parameterType="long" resultMap="BaseResultMap">
-select id,shop_id,product_category_id,`name`,product_sn,delete_status,publish_status,recommand_status,sale,price from pms_product
+select id,shop_id,product_category_id,`name`,pic,product_sn,delete_status,publish_status,recommand_status,sale,price from pms_product
 where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop_id = #{shopId} ORDER BY sale DESC
     </select>
     <select id="getLikePro" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">

@@ -2,10 +2,13 @@ package com.aaa.lee.app.fallback;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.service.IRepastService;
+import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
+import com.aaa.lee.app.vo.ProductHotBySale;
 import com.aaa.lee.app.vo.ProductParam;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -152,6 +155,34 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public List<ShopList> getShopList() {
                 System.out.println("测试获取所有商店信息进入熔断");
+                return null;
+            }
+
+            @Override
+            public List<HomeProductAdvertiseVo> getAdvertiseList() {
+                System.out.println("获取广告图片熔断");
+                return null;
+            }
+
+            @Override
+            public List<ProductHotBySale> getHotProducts(@RequestParam("shopId") Long shopId) {
+                System.out.println("获取人气商品熔断");
+                return null;
+            }
+
+            @Override
+            public ShopInfoVo getshopmsgById(@RequestParam("shopId") Long shopId) {
+                System.out.println("商品详情熔断");
+                return null;
+            }
+            @Override
+            public List<ShopInfo> touchShopByShopId(Long shopId) {
+                System.out.println("测试点击店铺信息熔断");
+                return null;
+            }
+            @Override
+            public List<ProductCat> getCateByShopId(Long shopId) {
+                System.out.println("测试店铺内商品列熔断");
                 return null;
             }
 

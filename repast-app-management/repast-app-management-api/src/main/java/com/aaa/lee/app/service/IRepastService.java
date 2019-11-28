@@ -2,6 +2,8 @@ package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.fallback.RepastFallBackFactory;
+import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
+import com.aaa.lee.app.vo.ProductHotBySale;
 import com.aaa.lee.app.vo.ProductParam;
 import com.aaa.lee.app.vo.ShopInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -224,6 +226,41 @@ public interface IRepastService {
      */
     @GetMapping("/getShopList")
     List<ShopList> getShopList();
+
+    /**
+     * 获得广告
+     * @return
+     */
+    @GetMapping("/getAdvertiseList")
+    List<HomeProductAdvertiseVo> getAdvertiseList();
+    /**
+     * 获取人气商品
+     */
+    @GetMapping("/getHotProduct")
+    List<ProductHotBySale> getHotProducts(@RequestParam("shopId") Long shopId);
+    /**
+     * @author Seven Lee
+     * @description
+     *      通过主键查询店铺信息
+     * @param [shopId]
+     * @date 2019/11/21
+     * @return java.lang.String
+     * @throws
+     **/
+    @GetMapping("/getshopmsgById")
+    ShopInfoVo getshopmsgById(@RequestParam("shopId") Long shopId);
+
+    /**
+     * 点击店铺获取店铺信息
+     */
+    @GetMapping("/touchShopByShopId")
+    List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId);
+
+    /**
+     * 店铺内的商品列
+     */
+    @GetMapping("/getCateByShopId")
+    List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId);
 
 
 }

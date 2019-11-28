@@ -26,15 +26,15 @@ public class ShopInfoVo implements Serializable {
     private String province;
     private String city;
     private String borough;
+    private String address;
     private String lng;
     private String lat;
+    private String openTime;
     private String phone;
+    private String images;
     private Long facilityId;
     private String title;
     private String description;
-    private String qname;
-    private Integer platform;
-    private BigDecimal amount;
-    private Integer useType;
+
 
 }
