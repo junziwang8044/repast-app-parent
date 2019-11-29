@@ -171,7 +171,7 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId) {
+            public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
                 System.out.println("商品详情熔断");
                 return null;
             }

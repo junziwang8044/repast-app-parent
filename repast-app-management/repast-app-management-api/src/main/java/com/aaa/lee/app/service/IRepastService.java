@@ -247,8 +247,8 @@ public interface IRepastService {
      * @return java.lang.String
      * @throws
      **/
-    @GetMapping("/getshopmsgById")
-    ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId);
+    @GetMapping("/getShopMsgById")
+    ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId);
 
     /**
      * 点击店铺获取店铺信息
