@@ -81,4 +81,10 @@ where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop
         INNER JOIN pms_product b on a.album_id = b.album_id
         where b.id = #{id}
     </select>
+
+    <select id="selectProducrByType" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">
+        SELECT * FROM
+	       pms_product
+        where product_category_id = #{productCategoryId}
+    </select>
 </mapper>

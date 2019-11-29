@@ -110,4 +110,15 @@ public class ProductController {
         }
         return null;
     }
+    /**
+     * 根据商品类目id查询该商店该类目的所有商品
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectProducrByType")
+    public List<Product> selectProducrByType(@RequestParam("id") Long id){
+        List<Product> products = productService.selectProducrByType(id);
+        return  products;
+
+    }
 }

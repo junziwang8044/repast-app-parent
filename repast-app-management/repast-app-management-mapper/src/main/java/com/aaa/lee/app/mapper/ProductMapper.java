@@ -22,4 +22,5 @@ public interface ProductMapper extends Mapper<Product> {
     List<ProductParam> selectProductParam(Long id);
 
     List<ProductPic> selectAlbumByProductId(Long id);
+    List<Product> selectProducrByType(Long id);
 }

@@ -12,7 +12,7 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-import static com.aaa.lee.app.staticstatus.StaticProperties.PRODUCT_ID;
+import static com.aaa.lee.app.staticstatus.StaticProperties.*;
 
 /**
  * @Company AAA软件教育
@@ -106,5 +106,15 @@ public class ProductService extends BaseService<Product> {
         }
         Product product1 = JSONUtil.toObject(productString, Product.class);
         return product1;
+    }
+
+    /**
+     * 根据商品类目id查询该商店该类目的所有商品
+     * @param id
+     * @return
+     */
+    public List<Product> selectProducrByType(Long id){
+            List<Product> products = productMapper.selectProducrByType(id);
+            return products;
     }
 }
