@@ -269,7 +269,11 @@ public interface IRepastService {
      */
     @GetMapping("/getServerByShopId")
     List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
-
+    /**
+     * 通过店铺id查询广告位的图片
+     * @param shopId
+     * @return
+     */
     @GetMapping("/shopIdList")
     List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
 

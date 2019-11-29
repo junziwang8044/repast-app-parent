@@ -16,7 +16,7 @@ public class PmsCommentReController {
     private PmsCommentReService pmsCommentReService;
 
     /**
-     *
+     *  更多搜索展示搜索过历史全部
      * @param id
      * @return
      */
@@ -29,7 +29,7 @@ public class PmsCommentReController {
     }
 
     /**
-     *
+     *  在搜索框下展示以往搜索过的内容，展示一两条
      * @param id
      * @return
      */
