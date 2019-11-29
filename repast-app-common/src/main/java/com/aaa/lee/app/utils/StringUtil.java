@@ -92,43 +92,6 @@ public class StringUtil {
         return str;
     }
 
-    /**
-     * 将byte[]数组转为base64文本
-     *
-     * @param decByte 编号后的byte数组
-     * @return base64文本
-     * @throws Exception
-     */
-    public static final String byteToBase64(byte[] decByte) throws Exception {
-        if (decByte == null)
-            return "";
-        String str = "";
-        try {
-            str = new sun.misc.BASE64Encoder().encodeBuffer(decByte);
-        } catch (Exception e) {
-            str = "";
-        }
-        return str.replace("\r", "").replace("\n", "");
-    }
-
-    /**
-     * 将 base64文本 转为  byte[]数组
-     *
-     * @param str base64文本
-     * @return byte[]数组
-     * @throws Exception
-     */
-    public static final byte[] base64ToByte(String str) throws Exception {
-        if (str == null)
-            return null;
-        byte[] decByte = null;
-        try {
-            decByte = new sun.misc.BASE64Decoder().decodeBuffer(str);
-        } catch (Exception e) {
-            decByte = null;
-        }
-        return decByte;
-    }
 
     /**
      * 将ErrorStack转化为String.

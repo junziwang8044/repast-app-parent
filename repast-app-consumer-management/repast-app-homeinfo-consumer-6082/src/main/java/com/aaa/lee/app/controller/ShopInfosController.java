@@ -4,8 +4,8 @@ import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.base.ResultData;
 import com.aaa.lee.app.domain.ProductCat;
 import com.aaa.lee.app.domain.ShopInfo;
-import com.aaa.lee.app.domain.ShopInfoFacility;
 import com.aaa.lee.app.service.IRepastService;
+import com.aaa.lee.app.vo.ShopInfoVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import java.util.List;
 public class ShopInfosController extends BaseController {
 
     @Autowired
-    private IRepastService repastService;
+    private IRepastService repastHomeService;
 
     /**
      * @author Seven Lee
@@ -40,8 +40,8 @@ public class ShopInfosController extends BaseController {
     **/
     @GetMapping("/getshopmsgById")
     @ApiOperation(value = "商店信息", notes = "通过主键查询商家信息")
-    public ResultData getshopmsgById(@RequestParam("shopId")Long shopId) {
-        ShopInfo shopList = repastService.getshopmsgById(shopId);
+    public ResultData getshopmsgById(@RequestParam("shopId") Long shopId) {
+        ShopInfoVo shopList = repastHomeService.getshopmsgById(shopId);
         if (null!=shopList){
             return success(shopList);
         }else{
@@ -55,7 +55,7 @@ public class ShopInfosController extends BaseController {
     @GetMapping("/touchShopByShopId")
     @ApiOperation(value = "店铺信息",notes = "点击店铺获取店铺信息")
     public ResultData touchShopByShopId(@RequestParam("shopId") Long shopId){
-        List<ShopInfo> shopInfos = repastService.touchShopByShopId(shopId);
+        List<ShopInfo> shopInfos = repastHomeService.touchShopByShopId(shopId);
         if (null != shopInfos){
             return success(shopInfos) ;
         }else {
@@ -70,24 +70,9 @@ public class ShopInfosController extends BaseController {
     @GetMapping("/getCateByShopId")
     @ApiOperation(value = "商品列信息(一级)",notes = "店铺内的商品列")
     public ResultData getCateByShopId(@RequestParam("shopId") Long shopId){
-        List<ProductCat> cateByShopId = repastService.getCateByShopId(shopId);
+        List<ProductCat> cateByShopId = repastHomeService.getCateByShopId(shopId);
         if (null != cateByShopId){
             return success(cateByShopId);
-        }else {
-            return failed();
-        }
-    }
-    /**
-     * 通过店铺主键查询店铺内提供的服务
-     * @param shopId
-     * @return
-     */
-    @GetMapping("/getServerByShopId")
-    @ApiOperation(value = "店铺的服务",notes = "通过店铺的主键查询店铺的服务")
-    public ResultData getServerByShopId(@RequestParam("shopId") Long shopId){
-        List<ShopInfoFacility> serverByShopId = repastService.getServerByShopId(shopId);
-        if (null != serverByShopId){
-            return success(serverByShopId);
         }else {
             return failed();
         }
