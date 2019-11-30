@@ -5,6 +5,7 @@ import com.aaa.lee.app.base.ResultData;
 import com.aaa.lee.app.domain.Product;
 import com.aaa.lee.app.domain.ProductPic;
 import com.aaa.lee.app.service.IRepastService;
+import com.aaa.lee.app.vo.CanTeenDateVo;
 import com.aaa.lee.app.vo.ProductParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -103,6 +104,19 @@ public class ProductController extends BaseController {
             return operationSuccess(productPics);
         }
         return operationFailed();
+    }
+
+    @GetMapping("/getCanteenDateByShopId")
+    @ApiOperation(value = "根据店铺id查询该店铺的一级菜单以及商品信息",notes = "之前写的查询商品信息不能用了，因为跟前端的格式对不上")
+    public ResultData getCanteenDateByShopId(@RequestParam("shopId") Long ShopId){
+        List<CanTeenDateVo> canteenDateByShopId = iRepastService.getCanteenDateByShopId(ShopId);
+
+
+        if (null!=canteenDateByShopId){
+
+            return success(canteenDateByShopId);
+        }
+        return failed();
     }
 
 

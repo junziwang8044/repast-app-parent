@@ -5,6 +5,7 @@ import com.aaa.lee.app.domain.Product;
 import com.aaa.lee.app.domain.ProductPic;
 import com.aaa.lee.app.mapper.ProductMapper;
 import com.aaa.lee.app.utils.JSONUtil;
+import com.aaa.lee.app.vo.CanTeenDateVo;
 import com.aaa.lee.app.vo.ProductParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,5 +107,10 @@ public class ProductService extends BaseService<Product> {
         }
         Product product1 = JSONUtil.toObject(productString, Product.class);
         return product1;
+    }
+
+    public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId){
+
+        return productMapper.getCanteenDateByShopId(ShopId);
     }
 }

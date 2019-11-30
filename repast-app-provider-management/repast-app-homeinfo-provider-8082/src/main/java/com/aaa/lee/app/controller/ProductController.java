@@ -6,6 +6,7 @@ import com.aaa.lee.app.domain.ProductPic;
 import com.aaa.lee.app.service.CommentService;
 import com.aaa.lee.app.service.ProductService;
 import com.aaa.lee.app.service.RedisService;
+import com.aaa.lee.app.vo.CanTeenDateVo;
 import com.aaa.lee.app.vo.ProductParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -109,5 +110,11 @@ public class ProductController {
             return productPics;
         }
         return null;
+    }
+
+
+    @GetMapping ("/getCanteenDateByShopId")
+    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId){
+        return productService.getCanteenDateByShopId(ShopId);//想好，如果使用一对多嵌套的实体类Vo，这样就没办法进redis查询了
     }
 }

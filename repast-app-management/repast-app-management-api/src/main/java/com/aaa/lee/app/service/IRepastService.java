@@ -2,10 +2,7 @@ package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.fallback.RepastFallBackFactory;
-import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
-import com.aaa.lee.app.vo.ProductHotBySale;
-import com.aaa.lee.app.vo.ProductParam;
-import com.aaa.lee.app.vo.ShopInfoVo;
+import com.aaa.lee.app.vo.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -272,5 +269,9 @@ public interface IRepastService {
 
     @GetMapping("/shopIdList")
     List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
+
+    @GetMapping ("/getCanteenDateByShopId")
+    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId);
+
 
 }
