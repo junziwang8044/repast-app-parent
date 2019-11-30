@@ -190,7 +190,13 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public List<SmsAdver> shopIdList(Long shopId) {
-                System.out.println("查询广告店铺根据id");
+                System.out.println("根据店铺id查询广告位的图片");
+                return null;
+            }
+
+            @Override
+            public List<Product> selectProducrByType(Long id) {
+                System.out.println("根据商品类目获取商品熔断");
                 return null;
             }
 

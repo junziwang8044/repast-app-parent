@@ -267,11 +267,23 @@ public interface IRepastService {
     @GetMapping("/getServerByShopId")
     List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
 
+    /**
+     * 根据店铺的id查询广告位的图片
+     * @param shopId
+     * @return
+     */
     @GetMapping("/shopIdList")
     List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
 
     @GetMapping ("/getCanteenDateByShopId")
     List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId);
 
+    /**
+     * 根据商品类目id查询该商店该类目的所有商品
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectProducrByType")
+   List<Product> selectProducrByType(@RequestParam("id") Long id);
 
 }

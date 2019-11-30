@@ -98,6 +98,7 @@ where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop
         where b.id = #{id}
     </select>
 
+
     <select id="getCanteenDateByShopId" parameterType="java.lang.Long" resultMap="CanteenDataMap">
 
    SELECT pc.id catId,pc.`name` catName,p.id,p.`name`,p.pic,p.price,p.promotion_price,p.sale,mp.member_price
@@ -109,5 +110,10 @@ WHERE p.shop_id = #{shopId}
    </select>
 
 
+    <select id="selectProducrByType" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">
+        SELECT * FROM
+	       pms_product
+        where product_category_id = #{productCategoryId}
+    </select>
 
 </mapper>

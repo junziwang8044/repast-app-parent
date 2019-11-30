@@ -44,7 +44,7 @@ public class CommentController extends BaseController {
      */
     @GetMapping("/selectTwoByProductId")
     @ApiOperation(value = "商品评论", notes = "查询商品评论")
-    public ResultData selectTwoByProductId(@RequestParam("id") Long id){
+    public ResultData selectTwoByProductId(Long id){
         List<Comment> commentByProductId = iRepastService.selectTwoByProductId(id);
         if(commentByProductId.size()>0){
             return operationSuccess(commentByProductId);

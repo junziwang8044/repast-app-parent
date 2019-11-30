@@ -12,5 +12,6 @@ public class StaticProperties {
     public static final String REDIS_KEY = "member";
     public static final String SHOP_ID = "shopId";
     public static final String PRODUCT_ID = "productId";
+    public static final String PTODUCT_TYPE ="productType";
 
 }

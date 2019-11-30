@@ -26,4 +26,6 @@ public interface ProductMapper extends Mapper<Product> {
 
     List<CanTeenDateVo> getCanteenDateByShopId(Long shopId);
 
+    List<Product> selectProducrByType(Long id);
+
 }
