@@ -20,13 +20,13 @@
     <result column="replay_count" property="replayCount" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <select id="selectCommentByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.Comment" >
+  <select id="selectCommentByProductId" parameterType="Long" resultMap="BaseResultMap" >
     select id, shop_id, order_id, product_id, member_nick_name, product_name, star, member_ip,
     create_time, show_status, product_attribute, collect_couont, read_count, pics, member_icon,
     replay_count, content
     from pms_comment where product_id=#{productId} and show_status = 1
   </select>
-  <select id="selectTwoByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.Comment">
+  <select id="selectTwoByProductId" parameterType="Long" resultMap="BaseResultMap">
     select id, shop_id, order_id, product_id, member_nick_name, product_name, star, member_ip,
     create_time, show_status, product_attribute, collect_couont, read_count, pics, member_icon,
     replay_count, content

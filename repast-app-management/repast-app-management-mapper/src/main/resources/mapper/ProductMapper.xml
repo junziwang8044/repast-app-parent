@@ -85,12 +85,14 @@ where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop
         INNER JOIN pms_album_pic b ON a.album_id=b.id
         WHERE a.id=#{id}
     </select>
+    <!--商品参数-->
     <select id="selectProductParam" parameterType="Long" resultType="com.aaa.lee.app.vo.ProductParam">
     SELECT b.product_id,a.`name`,b.value FROM
 	    pms_product_attribute a
     INNER JOIN pms_product_attribute_value b ON a.id =b.product_attribute_id
     where b.product_id = #{id};
   </select>
+    <!--商品相册-->
     <select id="selectAlbumByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.ProductPic">
         SELECT a.* FROM
 	        pms_album_pic a
