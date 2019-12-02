@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @Company AAA软件教育
- * @Author Seven Lee
+ * @Author hxx
  * @Date Create in 2019/11/21 11:00
  * @Description
  **/
@@ -27,7 +27,7 @@ public class ShopInfoService extends BaseService<ShopInfo> {
     }
 
     /**
-     * @author Seven Lee
+     * @author hxx
      * @description
      *      通过店铺主键查询店铺信息(包装类型)
      * @param [shopId]
@@ -48,7 +48,7 @@ public class ShopInfoService extends BaseService<ShopInfo> {
         return touchshopInfos;
     }
     /**
-     * @author Seven Lee
+     * @author hxx
      * @description
      *      通过店铺主键查询店铺信息(包装类型)
      * @param [shopId]

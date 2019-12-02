@@ -25,7 +25,11 @@ import java.util.List;
 public class HomeProductController extends BaseController {
     @Autowired
     private IRepastService repastService;
-
+    /**
+     * 查询广告位图片信息
+     * @param member
+     * @return
+     */
     @GetMapping("/getAdvertiseList")
     @ApiOperation(value = "广告信息", notes = "查询广告信图片息")
     public ResultData getAdvertiseList(){

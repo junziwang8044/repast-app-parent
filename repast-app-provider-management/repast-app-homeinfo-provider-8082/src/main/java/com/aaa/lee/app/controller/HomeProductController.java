@@ -23,7 +23,11 @@ public class HomeProductController {
     private HomeProductAdvertiseService homeProductAdvertiseService;
     @Autowired
     private ProductHotStatusService productHotStatusService;
-
+    /**
+     * 查询广告位图片信息
+     * @param member
+     * @return
+     */
     @GetMapping("/getAdvertiseList")
     public List<HomeProductAdvertiseVo> getAdvertiseList(){
         try {
@@ -34,6 +38,11 @@ public class HomeProductController {
         }
         return null;
     }
+    /**
+     * 查询人气商品
+     * @param member
+     * @return
+     */
     @GetMapping("/getHotProduct")
     public List<ProductHotBySale> getHotProducts(@RequestParam("shopId") Long shopId){
         try {

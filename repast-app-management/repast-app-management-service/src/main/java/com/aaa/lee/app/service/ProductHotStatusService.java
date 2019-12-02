@@ -25,6 +25,12 @@ public class ProductHotStatusService extends BaseService<ProductHotBySale> {
     public Mapper<ProductHotBySale> getMapper() {
         return productHotBySaleMapper;
     }
+
+    /**
+     * 根据店铺id查询店铺人气商品
+     * @param shopId
+     * @return
+     */
     public List<ProductHotBySale> getHotProduct(Long shopId){
         List<ProductHotBySale> hotProduct = productHotBySaleMapper.getHotProduct(shopId);
         if(null!=hotProduct){

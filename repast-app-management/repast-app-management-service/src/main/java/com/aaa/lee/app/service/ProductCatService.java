@@ -26,6 +26,11 @@ public class ProductCatService extends BaseService<ProductCat> {
         return productCatMapper;
     }
 
+    /**
+     * 店铺内的商品列
+     * @param shopId
+     * @return
+     */
     public List<ProductCat> getCateByShopId(Long shopId){
         List<ProductCat> productCats = productCatMapper.getCateByShopId(shopId);
         if (productCats.size()>0){

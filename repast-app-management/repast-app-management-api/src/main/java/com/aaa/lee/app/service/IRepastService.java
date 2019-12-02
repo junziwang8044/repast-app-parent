@@ -114,12 +114,6 @@ public interface IRepastService {
      */
     @GetMapping("/getdeleteHistorySearch")
     Boolean getdeleteHistorySearch();
-
-
-
-
-
-
     /**
      *      通过id查询商品上架下架和删除为删除的商品状态
      **/
