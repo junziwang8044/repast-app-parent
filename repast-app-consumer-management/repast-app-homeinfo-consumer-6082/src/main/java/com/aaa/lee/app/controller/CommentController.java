@@ -68,4 +68,19 @@ public class CommentController extends BaseController {
         return operationFailed();
     }
 
+    /**
+     * 查询回复评论
+     * @param commentId
+     * @return
+     */
+    @GetMapping("/selectReplay")
+    @ApiOperation(value="商品回复",notes="查询评论回复")
+    public ResultData selectReplay(Long commentId){
+        List<Replay> replays = iRepastService.selectReplay(commentId);
+        if(replays.size()>0){
+            return operationSuccess(replays);
+        }
+        return operationFailed();
+    }
+
 }

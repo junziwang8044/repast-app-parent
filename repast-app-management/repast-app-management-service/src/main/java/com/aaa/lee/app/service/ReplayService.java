@@ -9,6 +9,7 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReplayService extends BaseService<Replay> {
@@ -27,6 +28,7 @@ public class ReplayService extends BaseService<Replay> {
      * @return
              */
         public Integer insertReplay(Replay replay){
+
             Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dateString = formatter.format(date);
@@ -34,5 +36,15 @@ public class ReplayService extends BaseService<Replay> {
             Integer integer = replayMapper.insertReplay(replay);
             System.out.println(integer);
             return integer;
+    }
+
+    /**
+     * 查询回复评论
+     * @param commentId
+     * @return
+     */
+    public List<Replay> selectReplay(Long commentId){
+        List<Replay> replays = replayMapper.selectReplay(commentId);
+        return replays;
     }
 }

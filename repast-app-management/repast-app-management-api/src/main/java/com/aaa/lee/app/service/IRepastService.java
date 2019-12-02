@@ -286,4 +286,12 @@ public interface IRepastService {
     @GetMapping("/selectProducrByType")
    List<Product> selectProducrByType(@RequestParam("id") Long id);
 
+    /**
+     * 查询回复评论
+     * @param commentId
+     * @return
+     */
+    @GetMapping("/selectReplay")
+    List<Replay> selectReplay(@RequestParam("commentId") Long commentId);
+
 }

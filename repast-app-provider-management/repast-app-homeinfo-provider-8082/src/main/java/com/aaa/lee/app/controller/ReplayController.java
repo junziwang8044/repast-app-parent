@@ -3,9 +3,9 @@ package com.aaa.lee.app.controller;
 import com.aaa.lee.app.domain.Replay;
 import com.aaa.lee.app.service.ReplayService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ReplayController {
@@ -22,5 +22,15 @@ public class ReplayController {
     public Integer insertReplay(@RequestBody Replay replay) {
         Integer integer = replayService.insertReplay(replay);
         return integer;
+    }
+    /**
+     * 查询回复评论
+     * @param commentId
+     * @return
+     */
+    @GetMapping("/selectReplay")
+    public List<Replay> selectReplay(@RequestParam("commentId") Long commentId){
+        List<Replay> replays = replayService.selectReplay(commentId);
+        return replays;
     }
 }

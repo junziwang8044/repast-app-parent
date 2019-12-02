@@ -201,6 +201,12 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
+            public List<Replay> selectReplay(Long commentId) {
+                System.out.println("查询回复熔断");
+                return null;
+            }
+
+            @Override
             public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId) {
                 System.out.println("进入"+"老杨根据店铺信息获取一级菜单以及商品信息Canteen数据"+"熔断方法");
                 return null;
