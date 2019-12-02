@@ -105,7 +105,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getSearchHome")
-    List<Product> getSearchHome(@RequestParam("name") String name);
+    List<Product> getSearchHome(@RequestParam("name") String name,@RequestParam("token") String token);
 
     /**
      * 删除某个用户的历史搜索
@@ -113,7 +113,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getdeleteHistorySearch")
-    Boolean getdeleteHistorySearch();
+    Boolean getdeleteHistorySearch(@RequestParam("token") String token);
 
 
 
