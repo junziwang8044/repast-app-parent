@@ -56,7 +56,7 @@ public class ShopInfoService extends BaseService<ShopInfo> {
      * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
      * @throws
      **/
-    public ShopInfo getshopmsgById(Long shopId) {
+    public ShopInfo getShopMsgById(Long shopId) {
         ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
         return shopInfoByShopId;
     }

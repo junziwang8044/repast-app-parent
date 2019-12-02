@@ -2,10 +2,7 @@ package com.aaa.lee.app.fallback;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.service.IRepastService;
-import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
-import com.aaa.lee.app.vo.ProductHotBySale;
-import com.aaa.lee.app.vo.ProductParam;
-import com.aaa.lee.app.vo.ShopInfoVo;
+import com.aaa.lee.app.vo.*;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -171,7 +168,7 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId) {
+            public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
                 System.out.println("商品详情熔断");
                 return null;
             }
@@ -194,6 +191,18 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public List<SmsAdver> shopIdList(Long shopId) {
                 System.out.println("根据店铺id查询广告位的图片");
+                return null;
+            }
+
+            @Override
+            public List<Product> selectProducrByType(Long id) {
+                System.out.println("根据商品类目获取商品熔断");
+                return null;
+            }
+
+            @Override
+            public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId) {
+                System.out.println("进入"+"老杨根据店铺信息获取一级菜单以及商品信息Canteen数据"+"熔断方法");
                 return null;
             }
         };

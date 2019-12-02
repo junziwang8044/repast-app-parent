@@ -36,12 +36,12 @@ public class ShopInfosController extends BaseController {
      * @param [shopId]
      * @date 2019/11/21
      * @return com.aaa.lee.app.base.ResultData
-     * @throws 
-    **/
-    @GetMapping("/getshopmsgById")
+     * @throws
+     **/
+    @GetMapping("/getShopMsgById")
     @ApiOperation(value = "商店信息", notes = "通过主键查询商家信息")
-    public ResultData getshopmsgById(@RequestParam("shopId")Long shopId) {
-        ShopInfo shopList = repastService.getshopmsgById(shopId);
+    public ResultData getShopMsgById(@RequestParam("shopId")Long shopId) {
+        ShopInfo shopList = repastService.getShopMsgById(shopId);
         if (null!=shopList){
             return success(shopList);
         }else{

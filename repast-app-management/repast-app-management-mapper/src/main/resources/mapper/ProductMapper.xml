@@ -45,6 +45,22 @@
         <result column="detail_html" property="detailHtml" jdbcType="LONGVARCHAR"/>
         <result column="detail_mobile_html" property="detailMobileHtml" jdbcType="LONGVARCHAR"/>
     </resultMap>
+
+    <resultMap id="CanteenDataMap" type="com.aaa.lee.app.vo.CanTeenDateVo">
+    <result column="catId" property="catId" jdbcType="BIGINT"/>
+    <result column="catName" property="catName" jdbcType="VARCHAR"/>
+    <collection property="data" ofType="com.aaa.lee.app.vo.MemberProduct">
+        <result column="id" property="productId" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="pic" property="pic" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+        <result column="promotion_price" property="promotionPrice" jdbcType="DECIMAL"/>
+        <result column="member_price" property="memberPrice" jdbcType="DECIMAL"/>
+        <result column="sale" property="sale" jdbcType="INTEGER"/>
+    </collection>
+    </resultMap>
+
+
     <select id="getProductByShopId" parameterType="long" resultMap="BaseResultMap">
     select pp.* from pms_product pp
      inner join pms_sku_stock pss on pp.id = pss.product_id
@@ -69,16 +85,37 @@ where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop
         INNER JOIN pms_album_pic b ON a.album_id=b.id
         WHERE a.id=#{id}
     </select>
+    <!--商品参数-->
     <select id="selectProductParam" parameterType="Long" resultType="com.aaa.lee.app.vo.ProductParam">
     SELECT b.product_id,a.`name`,b.value FROM
 	    pms_product_attribute a
     INNER JOIN pms_product_attribute_value b ON a.id =b.product_attribute_id
     where b.product_id = #{id};
   </select>
+    <!--商品相册-->
     <select id="selectAlbumByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.ProductPic">
         SELECT a.* FROM
 	        pms_album_pic a
         INNER JOIN pms_product b on a.album_id = b.album_id
         where b.id = #{id}
     </select>
+
+
+    <select id="getCanteenDateByShopId" parameterType="java.lang.Long" resultMap="CanteenDataMap">
+
+   SELECT pc.id catId,pc.`name` catName,p.id,p.`name`,p.pic,p.price,p.promotion_price,p.sale,mp.member_price
+FROM pms_product p
+INNER JOIN pms_product_category pc on p.shop_id = pc.shop_id AND p.product_category_id = pc.id
+LEFT JOIN pms_member_price mp on p.id = mp.product_id
+WHERE p.shop_id = #{shopId}
+
+   </select>
+
+
+    <select id="selectProducrByType" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">
+        SELECT * FROM
+	       pms_product
+        where product_category_id = #{productCategoryId}
+    </select>
+
 </mapper>

@@ -2,6 +2,7 @@ package com.aaa.lee.app.mapper;
 
 import com.aaa.lee.app.domain.Product;
 import com.aaa.lee.app.domain.ProductPic;
+import com.aaa.lee.app.vo.CanTeenDateVo;
 import com.aaa.lee.app.vo.ProductParam;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -22,4 +23,9 @@ public interface ProductMapper extends Mapper<Product> {
     List<ProductParam> selectProductParam(Long id);
 
     List<ProductPic> selectAlbumByProductId(Long id);
+
+    List<CanTeenDateVo> getCanteenDateByShopId(Long shopId);
+
+    List<Product> selectProducrByType(Long id);
+
 }

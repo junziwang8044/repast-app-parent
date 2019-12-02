@@ -7,7 +7,6 @@ import com.aaa.lee.app.domain.ShopInfoFacility;
 import com.aaa.lee.app.service.ProductCatService;
 import com.aaa.lee.app.service.ShopInfoFacilityService;
 import com.aaa.lee.app.service.ShopInfoService;
-import com.aaa.lee.app.vo.ShopInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,9 +37,9 @@ public class ShopInfosController extends BaseController {
      * @param shopId
      * @return
      */
-    @GetMapping("/getshopmsgById")
-    public ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId) {
-        return shopInfoService.getshopmsgById(shopId);
+    @GetMapping("/getShopMsgById")
+    public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
+        return shopInfoService.getShopMsgById(shopId);
     }
 
     /**
