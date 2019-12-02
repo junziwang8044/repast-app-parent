@@ -4,4 +4,5 @@ import com.aaa.lee.app.domain.Member;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface MemberMapper extends Mapper<Member> {
+    Member selectByToken(String token);
 }

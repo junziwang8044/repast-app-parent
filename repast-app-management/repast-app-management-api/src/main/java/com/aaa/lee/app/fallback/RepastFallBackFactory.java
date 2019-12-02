@@ -61,16 +61,17 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public List<Product> getSearchHome(String name) {
+            public List<Product> getSearchHome(String name, String token) {
                 System.out.println("测试搜索首页商品");
                 return null;
             }
 
             @Override
-            public Boolean getdeleteHistorySearch() {
+            public Boolean getdeleteHistorySearch(String token) {
                 System.out.println("删除某个用户的历史搜索");
                 return false;
             }
+
 
             @Override
             public List<PmsProduct> getSelectAll(Long brandId) {

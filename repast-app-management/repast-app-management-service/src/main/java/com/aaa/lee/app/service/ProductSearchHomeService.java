@@ -27,15 +27,19 @@ public class ProductSearchHomeService extends BaseService<Product> {
      * @param name
      * @return
      */
-    public List<Product> getSearchHome(String name){
-        if(null!=name){
-            name=("%"+name+"%");
-        } else {
-            name=("%%");
-        }
-        List<Product> products = productSearchHomeMapper.selectProductSearchHome(name);
-        if(products.size()>0){
-            return products;
+    public List<Product> getSearchHome(String name,String token){
+
+        boolean b = selectToken(token);
+        if (b){
+            if(null!=name){
+                name=("%"+name+"%");
+            } else {
+                name=("%%");
+            }
+            List<Product> products = productSearchHomeMapper.selectProductSearchHome(name);
+            if(products.size()>0){
+                return products;
+            }
         }
         return null;
     }

@@ -30,4 +30,7 @@
     <result column="session_key" property="sessionKey" jdbcType="VARCHAR" />
     <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="selectByToken" resultMap="BaseResultMap" parameterType="string">
+    select * from ums_member where token=#{token}
+  </select>
 </mapper>

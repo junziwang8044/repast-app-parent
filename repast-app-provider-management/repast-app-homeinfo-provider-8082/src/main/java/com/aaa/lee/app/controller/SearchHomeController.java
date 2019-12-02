@@ -22,8 +22,8 @@ public class SearchHomeController {
      * @return
      */
     @GetMapping("/getSearchHome")
-    public List<Product> getSearchHome(String name){
+    public List<Product> getSearchHome(String name,String token){
 
-        return  productSearchHomeService.getSearchHome(name);
+        return  productSearchHomeService.getSearchHome(name,token);
     }
 }

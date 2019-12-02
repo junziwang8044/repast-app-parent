@@ -4,6 +4,7 @@ import com.aaa.lee.app.base.BaseService;
 import com.aaa.lee.app.domain.DeleteHistorySearch;
 import com.aaa.lee.app.domain.Member;
 import com.aaa.lee.app.mapper.DeleteHistorySearchMapper;
+import com.aaa.lee.app.mapper.MemberMapper;
 import com.aaa.lee.app.utils.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,37 +17,34 @@ import static com.aaa.lee.app.staticstatus.StaticProperties.REDIS_KEY;
  * @Date 2019/11/23 20:41
  **/
 @Service
-public class DeleteHistorySearchService extends BaseService<DeleteHistorySearch> {
+public class DeleteHistorySearchService extends BaseService<Member> {
 
     @Autowired
     private DeleteHistorySearchMapper deleteHistorySearchMapper;
+    @Autowired
+    private MemberMapper memberMapper;
     @Override
-    public Mapper<DeleteHistorySearch> getMapper() {
-        return deleteHistorySearchMapper;
+    public Mapper<Member> getMapper() {
+        return memberMapper;
     }
 
     /**
      * 删除某个用户的历史搜索
-     * @param redisService
+     * @param
      * @return
      */
-    public  Boolean getdeleteHistorySearch(RedisService redisService){
-        String member = redisService.get(REDIS_KEY);
-        try {
-            Member m = JSONUtil.toObject(member, Member.class);
-            if(null!=m){
-                Long id = m.getId();
+    public  Boolean getdeleteHistorySearch(String token){
+        if(null!=token){
+            Member m = new Member();
+            Member member = getMapper().selectOne(m.setToken(token));
+            if (null!=member){
+                Long id = member.getId();
                 int i = deleteHistorySearchMapper.deleteHistorySearch(id);
                 if(i>0){
                     return true;
                 }
             }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
         }
-
        return false;
     }
 }

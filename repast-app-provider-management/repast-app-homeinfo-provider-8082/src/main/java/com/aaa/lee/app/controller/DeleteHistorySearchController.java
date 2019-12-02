@@ -1,5 +1,6 @@
 package com.aaa.lee.app.controller;
 
+import com.aaa.lee.app.domain.Member;
 import com.aaa.lee.app.service.DeleteHistorySearchService;
 import com.aaa.lee.app.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeleteHistorySearchController {
     @Autowired
     private DeleteHistorySearchService deleteHistorySearchService;
-    @Autowired
-    private RedisService redisService;
+
 
     /**
      * 删除某个用户的历史搜索
@@ -23,7 +23,7 @@ public class DeleteHistorySearchController {
      * @return
      */
     @GetMapping("/getdeleteHistorySearch")
-    public Boolean getdeleteHistorySearch(){
-        return deleteHistorySearchService.getdeleteHistorySearch(redisService);
+    public Boolean getdeleteHistorySearch(String token){
+        return deleteHistorySearchService.getdeleteHistorySearch(token);
     }
 }

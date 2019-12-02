@@ -32,8 +32,8 @@ public class SearchHomeController extends BaseController {
      */
     @GetMapping("/getSearchHome")
     @ApiOperation(value = "搜索",notes ="首页搜索商品")
-    public ResultData getSearchHome(String name){
-        List<Product> searchHome = repastService.getSearchHome(name);
+    public ResultData getSearchHome(String name,String token){
+        List<Product> searchHome = repastService.getSearchHome(name,token);
        if(searchHome.size()>0){
          return success("搜索成功",searchHome);
        }
