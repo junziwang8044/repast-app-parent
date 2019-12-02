@@ -2,12 +2,10 @@ package com.aaa.lee.app.fallback;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.service.IRepastService;
-import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
-import com.aaa.lee.app.vo.ProductHotBySale;
-import com.aaa.lee.app.vo.ProductParam;
-import com.aaa.lee.app.vo.ShopInfoVo;
+import com.aaa.lee.app.vo.*;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -53,21 +51,6 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             @Override
             public List<Product> getHotProduct(Long shopId) {
                 System.out.println("测试热卖商品熔断数据");
-                return null;
-            }
-
-            @Override
-            public ShopInfoVo getshopmsgById(Long shopId) {
-                return null;
-            }
-
-            @Override
-            public List<ShopInfo> touchShopByShopId(Long shopId) {
-                return null;
-            }
-
-            @Override
-            public List<ProductCat> getCateByShopId(Long shopId) {
                 return null;
             }
 
@@ -174,15 +157,54 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public List<HomeProductAdvertiseVo> getAdvertiseList() {
+                System.out.println("获取广告图片熔断");
                 return null;
             }
 
             @Override
-            public List<ProductHotBySale> getHotProducts(Long shopId) {
+            public List<ProductHotBySale> getHotProducts(@RequestParam("shopId") Long shopId) {
+                System.out.println("获取人气商品熔断");
                 return null;
             }
 
+            @Override
+            public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
+                System.out.println("商品详情熔断");
+                return null;
+            }
+            @Override
+            public List<ShopInfo> touchShopByShopId(Long shopId) {
+                System.out.println("测试点击店铺信息熔断");
+                return null;
+            }
+            @Override
+            public List<ProductCat> getCateByShopId(Long shopId) {
+                System.out.println("测试店铺内商品列熔断");
+                return null;
+            }
+            @Override
+            public List<ShopInfoFacility> getServerByShopId(Long shopId) {
+                System.out.println("测试店铺服务熔断");
+                return null;
+            }
 
+            @Override
+            public List<SmsAdver> shopIdList(Long shopId) {
+                System.out.println("根据店铺id查询广告位的图片");
+                return null;
+            }
+
+            @Override
+            public List<Product> selectProducrByType(Long id) {
+                System.out.println("根据商品类目获取商品熔断");
+                return null;
+            }
+
+            @Override
+            public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId) {
+                System.out.println("进入"+"老杨根据店铺信息获取一级菜单以及商品信息Canteen数据"+"熔断方法");
+                return null;
+            }
         };
         return repastService;
     }

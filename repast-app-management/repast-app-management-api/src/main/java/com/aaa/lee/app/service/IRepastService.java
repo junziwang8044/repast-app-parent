@@ -2,10 +2,7 @@ package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.domain.*;
 import com.aaa.lee.app.fallback.RepastFallBackFactory;
-import com.aaa.lee.app.vo.HomeProductAdvertiseVo;
-import com.aaa.lee.app.vo.ProductHotBySale;
-import com.aaa.lee.app.vo.ProductParam;
-import com.aaa.lee.app.vo.ShopInfoVo;
+import com.aaa.lee.app.vo.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -247,8 +244,8 @@ public interface IRepastService {
      * @return java.lang.String
      * @throws
      **/
-    @GetMapping("/getshopmsgById")
-    ShopInfo getshopmsgById(@RequestParam("shopId") Long shopId);
+    @GetMapping("/getShopMsgById")
+    ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId);
 
     /**
      * 点击店铺获取店铺信息
@@ -270,7 +267,23 @@ public interface IRepastService {
     @GetMapping("/getServerByShopId")
     List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
 
+    /**
+     * 根据店铺的id查询广告位的图片
+     * @param shopId
+     * @return
+     */
     @GetMapping("/shopIdList")
     List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
+
+    @GetMapping ("/getCanteenDateByShopId")
+    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId);
+
+    /**
+     * 根据商品类目id查询该商店该类目的所有商品
+     * @param id
+     * @return
+     */
+    @GetMapping("/selectProducrByType")
+   List<Product> selectProducrByType(@RequestParam("id") Long id);
 
 }
