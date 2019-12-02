@@ -37,19 +37,19 @@ public class HomeProductController extends BaseController {
         }
         return failed();
     }
-    /**
-     * 查询人气商品
-     * @param member
-     * @return
-     */
-    @GetMapping("/getHotProduct")
-    @ApiOperation(value = "查询",notes = "查询人气商品")
-    public ResultData getHotProduct(@RequestParam("shopId") Long shopId){
-        List<ProductHotBySale> hotProduct = repastService.getHotProducts(shopId);
-        if(null!=hotProduct){
-            return success(hotProduct);
-        }
-        return failed();
-    }
+//    /**
+//     * 查询人气商品
+//     * @param member
+//     * @return
+//     */
+//    @GetMapping("/getHotProduct")
+//    @ApiOperation(value = "查询",notes = "查询人气商品")
+//    public ResultData getHotProducts(@RequestParam("shopId") Long shopId){
+//        List<ProductHotBySale> hotProduct = repastService.getHotProduct(shopId);
+//        if(null!=hotProduct){
+//            return success(hotProduct);
+//        }
+//        return failed();
+//    }
 
 }

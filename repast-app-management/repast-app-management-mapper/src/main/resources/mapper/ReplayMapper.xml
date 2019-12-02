@@ -21,5 +21,11 @@
       #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
       )
   </insert>
+  <select id="selectReplay" parameterType="Long" resultType="com.aaa.lee.app.domain.Replay">
+    select id , comment_id commentId, member_nick_name memberNickName, member_icon memberIcon,
+      content, create_time createTime, type
+      from pms_comment_replay
+    where comment_id = #{commentId}
+  </select>
 
 </mapper>

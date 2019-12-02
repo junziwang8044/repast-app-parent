@@ -35,7 +35,7 @@ public class HomeProductController {
         return null;
     }
     @GetMapping("/getHotProduct")
-    public List<ProductHotBySale> getHotProduct(@RequestParam("shopId") Long shopId){
+    public List<ProductHotBySale> getHotProducts(@RequestParam("shopId") Long shopId){
         try {
             List<ProductHotBySale> hotProduct = productHotStatusService.getHotProduct(shopId);
             if(hotProduct.size()>0){
