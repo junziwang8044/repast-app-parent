@@ -124,7 +124,7 @@ public interface IRepastService {
 
 
     /**
-     *      通过id查询商品上架下架和删除为删除的商品状态（商品属性、状态）
+     *      通过id查询商品上架下架和删除为删除的商品状态
      **/
     @GetMapping("/selectAll")
     List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId);

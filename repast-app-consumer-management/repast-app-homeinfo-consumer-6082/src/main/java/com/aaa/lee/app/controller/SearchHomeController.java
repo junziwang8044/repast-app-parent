@@ -42,7 +42,7 @@ public class SearchHomeController extends BaseController {
      * @return
      */
     @GetMapping("/selectAll")
-    @ApiOperation(value = "查询商品类型信息", notes = "执行查询商品类型操作，查询上架和未删除状态的商品")
+    @ApiOperation(value = "查询商品状态信息", notes = "执行查询商品类型操作，查询上架和未删除状态的商品")
     public ResultData getSelectAll(Long brandId) {
         List<PmsProduct> getSelectAll = repastService.getSelectAll(brandId);
 

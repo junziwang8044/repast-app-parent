@@ -77,7 +77,7 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
 
             @Override
             public List<PmsProduct> getSelectAll(Long brandId) {
-                System.out.println("根据id查到商品上架下架和删除未删除的状态（商品的属性状态）");
+                System.out.println("根据id查到商品上架下架和删除未删除的状态（商品的状态）");
                 return null;
             }
 
