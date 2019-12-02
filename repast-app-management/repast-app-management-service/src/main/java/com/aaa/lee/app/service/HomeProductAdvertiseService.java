@@ -23,11 +23,16 @@ public class HomeProductAdvertiseService extends BaseService<HomeProductAdvertis
     public Mapper<HomeProductAdvertiseVo> getMapper() {
         return homeProductAdvertiseMapper;
     }
+
+    /**
+     * 查询广告位图片
+     * @return
+     */
     public List<HomeProductAdvertiseVo> getAdvertiseList(){
         List<HomeProductAdvertiseVo> advertiseList = homeProductAdvertiseMapper.getAdvertiseList();
-        System.out.println(advertiseList);
+       // System.out.println(advertiseList);
         if (advertiseList.size()>0){
-            System.out.println(advertiseList);
+            //System.out.println(advertiseList);
             return advertiseList;
         }else {
             return null;
