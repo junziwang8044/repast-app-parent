@@ -22,8 +22,17 @@ public class ProductSearchHomeService extends BaseService<Product> {
     public Mapper<Product> getMapper() {
         return productSearchHomeMapper;
     }
-
+    /**
+     * 首页搜索
+     * @param name
+     * @return
+     */
     public List<Product> getSearchHome(String name){
+        if(null!=name){
+            name=("%"+name+"%");
+        } else {
+            name=("%%");
+        }
         List<Product> products = productSearchHomeMapper.selectProductSearchHome(name);
         if(products.size()>0){
             return products;

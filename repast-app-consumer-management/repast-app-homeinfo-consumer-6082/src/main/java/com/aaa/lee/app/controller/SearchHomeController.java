@@ -25,6 +25,11 @@ public class SearchHomeController extends BaseController {
     @Autowired
     private IRepastService repastService;
 
+    /**
+     * 首页搜索
+     * @param name
+     * @return
+     */
     @GetMapping("/getSearchHome")
     @ApiOperation(value = "搜索",notes ="首页搜索商品")
     public ResultData getSearchHome(String name){

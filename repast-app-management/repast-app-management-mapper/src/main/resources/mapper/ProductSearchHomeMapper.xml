@@ -43,9 +43,7 @@
     <result column="detail_mobile_html" property="detailMobileHtml" jdbcType="LONGVARCHAR" />
   </resultMap>
   <select id="selectProductSearchHome" resultMap="BaseResultMap" parameterType="string">
-    SELECT * from pms_product WHERE delete_status = 0 AND publish_status = 1 AND stock > 0
-    AND currency = 0 AND `name`
-     LIKE  '%'||#{name}||'%' OR keywords LIKE '%'||#{name}||'%'
-    OR product_category_name LIKE '%'||#{name}||'%'
+           SELECT * from pms_product WHERE delete_status = 0 AND publish_status = 1 AND stock > 0
+        AND concat(`name`,',',keywords,',',product_category_name) like #{name}
    </select>
 </mapper>

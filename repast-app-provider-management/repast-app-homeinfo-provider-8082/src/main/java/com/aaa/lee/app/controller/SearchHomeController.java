@@ -17,7 +17,9 @@ public class SearchHomeController {
     @Autowired
     private ProductSearchHomeService productSearchHomeService;
     /**
-     * 搜索商品
+     * 首页搜索
+     * @param name
+     * @return
      */
     @GetMapping("/getSearchHome")
     public List<Product> getSearchHome(String name){
