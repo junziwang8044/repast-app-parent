@@ -60,7 +60,7 @@ public class SearchHomeController extends BaseController {
      * @return
      */
     @GetMapping("/searchAll")
-    @ApiOperation(value = "查询搜索历史", notes = "查询搜索过的信息历史")
+    @ApiOperation(value = "查询搜索历史(更多搜索历史)", notes = "查询搜索过的信息历史")
     public ResultData searchAll(Long id){
         List<PmsCommentRe> pmsCommentRes = repastService.searchAll(id);
         if (pmsCommentRes.size() > 0) {
