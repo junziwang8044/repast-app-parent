@@ -2,7 +2,9 @@ package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.base.BaseService;
 import com.aaa.lee.app.domain.Comment;
+import com.aaa.lee.app.domain.Member;
 import com.aaa.lee.app.mapper.CommentMapper;
+import com.aaa.lee.app.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
@@ -14,6 +16,8 @@ public class CommentService extends BaseService<Comment> {
 
     @Autowired
     private CommentMapper commentMapper;
+    @Autowired
+    private MemberMapper memberMapper;
 
     @Override
     public Mapper<Comment> getMapper() {
@@ -25,9 +29,17 @@ public class CommentService extends BaseService<Comment> {
      * @param id
      * @return
      */
-    public List<Comment> selectCommentByProductId(Long id){
-        List<Comment> comments = commentMapper.selectCommentByProductId(id);
-        return comments;
+    public List<Comment> selectCommentByProductId(Long id ,String token){
+        boolean boo = selectToken(token);
+        if(boo){
+            List<Comment> comments = commentMapper.selectCommentByProductId(id);
+            if(comments.size()>0){
+                return comments;
+            }
+        }
+
+        return null;
+
     }
 
     /**
@@ -35,10 +47,15 @@ public class CommentService extends BaseService<Comment> {
      * @param id
      * @return
      */
-    public List<Comment> selectTwoByProductId(Long id){
-        List<Comment> twoComment = commentMapper.selectTwoByProductId(id);
-        return twoComment;
-
+    public List<Comment> selectTwoByProductId(Long id ,String token){
+        boolean boo = selectToken(token);
+        if(boo){
+            List<Comment> twoComment = commentMapper.selectTwoByProductId(id);
+            if(twoComment.size()>0){
+                return twoComment;
+            }
+        }
+        return null;
     }
 
 }

@@ -27,8 +27,8 @@ public class ShopController extends BaseController {
      */
     @GetMapping("/getCatByShopId")
     @ApiOperation(value = "商品类目", notes = "通过店铺主键查询商品类目列表")
-    public ResultData getCategoryByShopId(Long shopid){
-        List<ProductCatG> catList = repastService.getCategoryByShopId1(shopid);
+    public ResultData getCategoryByShopId(Long shopid,String token){
+        List<ProductCatG> catList = repastService.getCategoryByShopId1(shopid,token);
         if(null!=catList){
             return  success(catList);
         }

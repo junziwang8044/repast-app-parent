@@ -90,14 +90,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getHot")
-    List<Product> getHotProduct(@RequestParam("shopId") Long shopId);
-
-    /**
-     * 通过商品id获取商品属性列表
-     * @return
-     */
-    @GetMapping("/getPac")
-    List<ProductCategory> getPacByProductId(@RequestParam("shopId") Long shopId);
+    List<Product> getHotProduct(@RequestParam("shopId") Long shopId ,@RequestParam("token") String token);
 
     /**
      * 查询商品
@@ -146,7 +139,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getProductById")
-    Product getProductById(@RequestParam("id") Long id);
+    Product getProductById(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据商品id获取商品的评论
@@ -154,7 +147,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getCommentByProductId")
-    List<Comment> getCommentByProductId(@RequestParam("id") Long id);
+    List<Comment> getCommentByProductId(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据商品id获取商品的类似推荐商品
@@ -162,7 +155,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getLikePro")
-    List<Product> getLikePro(@RequestParam("id") Long id);
+    List<Product> getLikePro(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据商品id获取商品阅读量高的前两个评论
@@ -170,7 +163,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectTwoByProductId")
-    List<Comment> selectTwoByProductId(@RequestParam("id") Long id);
+    List<Comment> selectTwoByProductId(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据店铺id查询该店商品的推荐
@@ -178,7 +171,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getRecommandByShopId")
-    List<Product> getRecommandByShopId(@RequestParam("shopId") Long shopId);
+    List<Product> getRecommandByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
     /**
      * 添加评论回复
@@ -187,7 +180,7 @@ public interface IRepastService {
      * @return
      */
     @PostMapping("/insertReplay")
-    Integer insertReplay(@RequestBody Replay replay);
+    Integer insertReplay(@RequestBody Replay replay,@RequestParam("token") String token);
 
     /**
      * 根据商品id查询图片列表
@@ -195,7 +188,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectPicByShopId")
-    List<ProductPic> selectPicByShopId(@RequestParam("id") Long id);
+    List<ProductPic> selectPicByShopId(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据商品id查询商品参数
@@ -203,7 +196,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectProductParam")
-    List<ProductParam> selectProductParam(@RequestParam("id") Long id);
+    List<ProductParam> selectProductParam(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 根据商品id查询商品的图片列表
@@ -211,13 +204,13 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectAlbumByProductId")
-    List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id);
+    List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      *通过商品的id获取类目的列表
      */
     @GetMapping("/getCatByShopId")
-    List<ProductCatG> getCategoryByShopId1(@RequestParam("shopId") Long shopId);
+    List<ProductCatG> getCategoryByShopId1(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
     /**
      * 查询出所有店铺的信息
      */
@@ -275,8 +268,15 @@ public interface IRepastService {
     @GetMapping("/shopIdList")
     List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
+    /**
+     * 商店类目的所有商品
+     * @param ShopId
+     * @param token
+     * @return
+     */
+
     @GetMapping ("/getCanteenDateByShopId")
-    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId);
+    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId,@RequestParam("token")String token);
 
     /**
      * 根据商品类目id查询该商店该类目的所有商品
@@ -284,7 +284,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectProducrByType")
-   List<Product> selectProducrByType(@RequestParam("id") Long id);
+   List<Product> selectProducrByType(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 查询回复评论
@@ -292,6 +292,6 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/selectReplay")
-    List<Replay> selectReplay(@RequestParam("commentId") Long commentId);
+    List<Replay> selectReplay(@RequestParam("commentId") Long commentId,@RequestParam("token") String token);
 
 }

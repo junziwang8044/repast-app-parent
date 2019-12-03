@@ -25,18 +25,28 @@ public class ProductController {
     @Autowired
     private RedisService redisService;
 
+    /**
+     * 根据商品id查询评论
+     * @param id
+     * @return
+     */
     @GetMapping("/getCommentByProductId")
-    public List<Comment> getCommentByProductId(@RequestParam("id") Long id) {
-        List<Comment> comments = commentService.selectCommentByProductId(id);
+    public List<Comment> getCommentByProductId(@RequestParam("id") Long id,@RequestParam("token") String token) {
+        List<Comment> comments = commentService.selectCommentByProductId(id,token);
         if (comments.size() > 0) {
             return comments;
         }
         return null;
     }
 
+    /**
+     * 根据商品id查询评论(两条)
+     * @param id
+     * @return
+     */
     @GetMapping("/selectTwoByProductId")
-    public List<Comment> selectTwoByProductId(@RequestParam("id") Long id) {
-        List<Comment> twoComment = commentService.selectTwoByProductId(id);
+    public List<Comment> selectTwoByProductId(@RequestParam("id") Long id,@RequestParam("token") String token) {
+        List<Comment> twoComment = commentService.selectTwoByProductId(id,token);
         return twoComment;
     }
 
@@ -47,14 +57,19 @@ public class ProductController {
      * @return
      */
     @GetMapping("/getProductById")
-    public Product getProductById(@RequestParam("id") Long id) {
-        Product productById = productService.getProductById(id, redisService);
+    public Product getProductById(@RequestParam("id") Long id ,@RequestParam("token") String token) {
+        Product productById = productService.getProductById(id, redisService,token);
         return productById;
     }
 
+    /**
+     * 根据商品id查询雷士商品
+     * @param id
+     * @return
+     */
     @GetMapping("/getLikePro")
-    public List<Product> getLikePro(@RequestParam("id") Long id) {
-        List<Product> likePro = productService.getLikePro(id);
+    public List<Product> getLikePro(@RequestParam("id") Long id,@RequestParam("token") String token) {
+        List<Product> likePro = productService.getLikePro(id,token);
         if (likePro.size() > 0) {
             return likePro;
         }
@@ -68,8 +83,8 @@ public class ProductController {
      * @return
      */
     @GetMapping("/getRecommandByShopId")
-    public List<Product> getRecommandByShopId(@RequestParam("shopId") Long shopId) {
-        List<Product> recommandByShopId = productService.getRecommandByShopId(shopId);
+    public List<Product> getRecommandByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token) {
+        List<Product> recommandByShopId = productService.getRecommandByShopId(shopId,token);
         if (recommandByShopId.size() > 0) {
             return recommandByShopId;
         }
@@ -83,8 +98,8 @@ public class ProductController {
      * @return
      */
     @GetMapping("/selectPicByShopId")
-    public List<ProductPic> selectPicByShopId(@RequestParam("id") Long id) {
-        List<ProductPic> productPics = productService.selectPicByShopId(id);
+    public List<ProductPic> selectPicByShopId(@RequestParam("id") Long id,@RequestParam("token") String token) {
+        List<ProductPic> productPics = productService.selectPicByShopId(id,token);
         if (productPics.size() > 0) {
             return productPics;
         }
@@ -98,8 +113,8 @@ public class ProductController {
      * @return
      */
     @GetMapping("/selectProductParam")
-    public List<ProductParam> selectProductParam(@RequestParam("id") Long id) {
-        List<ProductParam> productParams = productService.selectProductParam(id);
+    public List<ProductParam> selectProductParam(@RequestParam("id") Long id ,@RequestParam("token") String token) {
+        List<ProductParam> productParams = productService.selectProductParam(id, token);
         if (productParams.size() > 0) {
             return productParams;
         }
@@ -113,8 +128,8 @@ public class ProductController {
      * @return
      */
     @GetMapping("/selectAlbumByProductId")
-    public List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id) {
-        List<ProductPic> productPics = productService.selectAlbumByProductId(id);
+    public List<ProductPic> selectAlbumByProductId(@RequestParam("id") Long id,@RequestParam("token") String token) {
+        List<ProductPic> productPics = productService.selectAlbumByProductId(id, token);
         if (productPics.size() > 0) {
             return productPics;
         }
@@ -122,8 +137,8 @@ public class ProductController {
     }
 
     @GetMapping("/getCanteenDateByShopId")
-    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId) {
-        return productService.getCanteenDateByShopId(ShopId);//想好，如果使用一对多嵌套的实体类Vo，这样就没办法进redis查询了
+    List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId,@RequestParam("token") String token) {
+        return productService.getCanteenDateByShopId(ShopId,token);//想好，如果使用一对多嵌套的实体类Vo，这样就没办法进redis查询了
 
 
     }
@@ -135,8 +150,8 @@ public class ProductController {
      */
 
     @GetMapping("/selectProducrByType")
-    public List<Product> selectProducrByType(@RequestParam("id") Long id){
-        List<Product> products = productService.selectProducrByType(id);
+    public List<Product> selectProducrByType(@RequestParam("id") Long id,@RequestParam("token") String token){
+        List<Product> products = productService.selectProducrByType(id,token);
         return products;
     }
 }

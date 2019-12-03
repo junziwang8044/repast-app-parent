@@ -19,8 +19,8 @@ public class ReplayController {
      * @return
      */
     @PostMapping("/insertReplay")
-    public Integer insertReplay(@RequestBody Replay replay) {
-        Integer integer = replayService.insertReplay(replay);
+    public Integer insertReplay(@RequestBody Replay replay,@RequestParam("token") String token) {
+        Integer integer = replayService.insertReplay(replay,token);
         return integer;
     }
     /**
@@ -29,8 +29,8 @@ public class ReplayController {
      * @return
      */
     @GetMapping("/selectReplay")
-    public List<Replay> selectReplay(@RequestParam("commentId") Long commentId){
-        List<Replay> replays = replayService.selectReplay(commentId);
+    public List<Replay> selectReplay(@RequestParam("commentId") Long commentId,@RequestParam("token") String token){
+        List<Replay> replays = replayService.selectReplay(commentId,token);
         return replays;
     }
 }

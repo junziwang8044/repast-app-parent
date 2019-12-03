@@ -5,6 +5,7 @@ import com.aaa.lee.app.service.DeleteHistorySearchService;
 import com.aaa.lee.app.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,7 +24,7 @@ public class DeleteHistorySearchController {
      * @return
      */
     @GetMapping("/getdeleteHistorySearch")
-    public Boolean getdeleteHistorySearch(String token){
+    public Boolean getdeleteHistorySearch(@RequestParam("token") String token){
         return deleteHistorySearchService.getdeleteHistorySearch(token);
     }
 }

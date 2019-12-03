@@ -17,19 +17,11 @@ public class SmsAdverController  extends BaseController {
     @Autowired
     private SmsAdverService smsAdverService;
 
-
-
-
-
     @GetMapping("/shopIdList")
     public List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId,@RequestParam("token") String token){
 
         return  smsAdverService.shopIdList(shopId,token);
 
     }
-
-
-
-
 
 }

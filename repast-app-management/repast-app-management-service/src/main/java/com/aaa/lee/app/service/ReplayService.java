@@ -1,6 +1,7 @@
 package com.aaa.lee.app.service;
 
 import com.aaa.lee.app.base.BaseService;
+import com.aaa.lee.app.domain.Comment;
 import com.aaa.lee.app.domain.Replay;
 import com.aaa.lee.app.mapper.ReplayMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,19 @@ public class ReplayService extends BaseService<Replay> {
      * @param replay
      * @return
              */
-        public Integer insertReplay(Replay replay){
+        public Integer insertReplay(Replay replay ,String token){
+            boolean boo = selectToken(token);
+            if(boo){
+                Date date = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String dateString = formatter.format(date);
+                replay.setCreateTime(dateString);
+                Integer integer = replayMapper.insertReplay(replay);
+                return integer;
+                }
 
-            Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dateString = formatter.format(date);
-            replay.setCreateTime(dateString);
-            Integer integer = replayMapper.insertReplay(replay);
-            System.out.println(integer);
-            return integer;
+            return null;
+
     }
 
     /**
@@ -43,8 +48,14 @@ public class ReplayService extends BaseService<Replay> {
      * @param commentId
      * @return
      */
-    public List<Replay> selectReplay(Long commentId){
-        List<Replay> replays = replayMapper.selectReplay(commentId);
-        return replays;
+    public List<Replay> selectReplay(Long commentId ,String token){
+        boolean boo = selectToken(token);
+        if(boo){
+            List<Replay> replays = replayMapper.selectReplay(commentId);
+            if(replays.size()>0){
+                return replays;
+            }
+        }
+        return null;
     }
 }

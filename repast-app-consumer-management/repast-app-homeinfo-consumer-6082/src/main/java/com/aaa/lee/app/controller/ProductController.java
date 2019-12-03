@@ -22,10 +22,15 @@ public class ProductController extends BaseController {
     @Autowired
     private IRepastService iRepastService;
 
+    /**
+     * 根据商品id查询商品详情
+     * @param id
+     * @return
+     */
     @GetMapping("/getProductById")
     @ApiOperation(value="商品详情",notes = "根据id查询商品详情")
-    public ResultData getProductById(@RequestParam("id") Long id){
-        Product productById = iRepastService.getProductById(id);
+    public ResultData getProductById(Long id,String token){
+        Product productById = iRepastService.getProductById(id,token);
         if(null != productById){
             return operationSuccess(productById);
         }
@@ -38,8 +43,8 @@ public class ProductController extends BaseController {
      */
     @GetMapping("/getLikePro")
     @ApiOperation(value="类似商品",notes = "根据商品id查询类似商品")
-    public ResultData getLikePro(Long id){
-        List<Product> likePro = iRepastService.getLikePro(id);
+    public ResultData getLikePro(Long id,String token){
+        List<Product> likePro = iRepastService.getLikePro(id,token);
         if(likePro.size()>0){
             return operationSuccess(likePro);
         }
@@ -53,8 +58,8 @@ public class ProductController extends BaseController {
      */
     @GetMapping("/getRecommandByShopId")
     @ApiOperation(value="店长推荐",notes="根据店铺id查询该店商品的推荐")
-    public ResultData getRecommandByShopId(Long shopId){
-        List<Product> recommandByShopId = iRepastService.getRecommandByShopId(shopId);
+    public ResultData getRecommandByShopId(Long shopId,String token){
+        List<Product> recommandByShopId = iRepastService.getRecommandByShopId(shopId,token);
         if(recommandByShopId.size()>0){
             return operationSuccess(recommandByShopId);
         }
@@ -68,8 +73,8 @@ public class ProductController extends BaseController {
      */
     @GetMapping("/selectPicByShopId")
     @ApiOperation(value="商店图片",notes="根据商品id查询图店列表")
-    public ResultData selectPicByShopId(Long id){
-        List<ProductPic> productPics = iRepastService.selectPicByShopId(id);
+    public ResultData selectPicByShopId(Long id,String token){
+        List<ProductPic> productPics = iRepastService.selectPicByShopId(id,token);
         if(productPics.size()>0){
             return operationSuccess(productPics);
         }
@@ -83,8 +88,8 @@ public class ProductController extends BaseController {
      */
     @GetMapping("/selectProductParam")
     @ApiOperation(value="商品参数",notes = "根据商品id查询商品参数")
-    public ResultData selectProductParam(Long id){
-        List<ProductParam> productParams = iRepastService.selectProductParam(id);
+    public ResultData selectProductParam(Long id,String token){
+        List<ProductParam> productParams = iRepastService.selectProductParam(id,token);
         if(productParams.size()>0){
             return operationSuccess(productParams);
         }
@@ -98,8 +103,8 @@ public class ProductController extends BaseController {
      */
     @GetMapping("/selectAlbumByProductId")
     @ApiOperation(value="商品图集",notes = "根据商品id查询商品图片")
-    public ResultData selectAlbumByProductId(@RequestParam("id") Long id){
-        List<ProductPic> productPics = iRepastService.selectAlbumByProductId(id);
+    public ResultData selectAlbumByProductId(Long id,String token){
+        List<ProductPic> productPics = iRepastService.selectAlbumByProductId(id, token);
         if(productPics.size()>0){
             return operationSuccess(productPics);
         }
@@ -109,8 +114,8 @@ public class ProductController extends BaseController {
 
     @GetMapping("/getCanteenDateByShopId")
     @ApiOperation(value = "根据店铺id查询该店铺的一级菜单以及商品信息",notes = "之前写的查询商品信息不能用了，因为跟前端的格式对不上")
-    public ResultData getCanteenDateByShopId(@RequestParam("shopId") Long ShopId){
-        List<CanTeenDateVo> canteenDateByShopId = iRepastService.getCanteenDateByShopId(ShopId);
+    public ResultData getCanteenDateByShopId(@RequestParam("shopId") Long ShopId,String token){
+        List<CanTeenDateVo> canteenDateByShopId = iRepastService.getCanteenDateByShopId(ShopId,token);
 
 
         if (null!=canteenDateByShopId){
@@ -126,8 +131,8 @@ public class ProductController extends BaseController {
      * @return
      */
     @GetMapping("/selectProducrByType")
-    public ResultData selectProducrByType(Long id){
-        List<Product> products = iRepastService.selectProducrByType(id);
+    public ResultData selectProducrByType(Long id,String token){
+        List<Product> products = iRepastService.selectProducrByType(id,token);
         if(products.size()>0){
             return operationSuccess(products);
         }
