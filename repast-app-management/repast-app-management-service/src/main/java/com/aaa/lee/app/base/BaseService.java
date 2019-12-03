@@ -208,11 +208,11 @@ public abstract class BaseService<T> {
      * 验证token值
      * @param token
      * @return
-     * @throws Exception
+     * @throws
      */
     public boolean selectToken(String token){
         if(null!=token) {
-            String token1 = memberMapper.selectByToken(token);
+            Member token1 = memberMapper.selectByToken(token);
             if (null!=token1){
                 return true;
             }
