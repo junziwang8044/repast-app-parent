@@ -4,6 +4,7 @@ import com.aaa.lee.app.domain.Product;
 import com.aaa.lee.app.service.ProductSearchHomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class SearchHomeController {
      * @return
      */
     @GetMapping("/getSearchHome")
-    public List<Product> getSearchHome(String name,String token){
+    public List<Product> getSearchHome(@RequestParam("name") String name,@RequestParam("token") String token){
 
         return  productSearchHomeService.getSearchHome(name,token);
     }
