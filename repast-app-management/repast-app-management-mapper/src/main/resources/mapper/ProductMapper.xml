@@ -62,22 +62,22 @@
 
 
     <select id="getProductByShopId" parameterType="long" resultMap="BaseResultMap">
-    select pp.* from pms_product pp
+    select pp.id,pp.shop_id shopId,pp.product_category_id productCategoryId,pp.name,pp.pic,pp.product_sn productSn,pp.delete_status deleteStatus,pp.publish_status publishStatus,pp.recommand_status recommandStatus,pp.sale,pp.price,pp.original_price originalPrice from pms_product pp
      inner join pms_sku_stock pss on pp.id = pss.product_id
     where pp.delete_status = 0 and pp.publish_status = 1 and pss.stock > 0 and pp.shop_id = #{shopId}
   </select>
     <select id="selectAllHotProduct" parameterType="long" resultMap="BaseResultMap">
-select id,shop_id,product_category_id,`name`,pic,product_sn,delete_status,publish_status,recommand_status,sale,price from pms_product
+select id,shop_id shopId,product_category_id productCategoryId,`name`,pic,product_sn productSn,delete_status deleteStatus,publish_status publishStatus,recommand_status recommandStatus,sale,price from pms_product
 where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop_id = #{shopId} ORDER BY sale DESC
     </select>
     <select id="getLikePro" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">
-       select pp.* from pms_product pp
+       select pp.id,pp.name,pp.pic,pp.price,pp.original_price originalPrice from pms_product pp
         inner join pms_sku_stock pss on pp.id = pss.product_id
         where pp.product_category_id=(select pp.product_category_id  from pms_product pp where pp.id=#{id}) and pp.delete_status = 0 and pp.publish_status = 1 and pss.stock > 0  and pp.id != #{id}
-        order by sale desc limit 0,4;
+        order by pp.sale desc limit 0,4;
     </select>
     <select id="getRecommandByShopId" parameterType="Long" resultType="com.aaa.lee.app.domain.Product">
-        select * from pms_product where shop_id = #{shopId} and recommand_status = 1
+        select id,shop_id shopId,product_category_id productCategoryId,`name`,pic,product_sn productSn,delete_status deleteStatus,publish_status publishStatus,recommand_status recommandStatus,sale,price,original_price originalPrice from pms_product where shop_id = #{shopId} and recommand_status = 1
     </select>
     <select id="selectPicByShopId" parameterType="Long" resultType="com.aaa.lee.app.domain.ProductPic">
         SELECT b.pic FROM
@@ -87,14 +87,14 @@ where delete_status = 0 and publish_status = 1 and recommand_status = 1 and shop
     </select>
     <!--商品参数-->
     <select id="selectProductParam" parameterType="Long" resultType="com.aaa.lee.app.vo.ProductParam">
-    SELECT b.product_id,a.`name`,b.value FROM
+    SELECT b.product_id productId,a.`name`,b.value FROM
 	    pms_product_attribute a
     INNER JOIN pms_product_attribute_value b ON a.id =b.product_attribute_id
     where b.product_id = #{id};
   </select>
     <!--商品相册-->
     <select id="selectAlbumByProductId" parameterType="Long" resultType="com.aaa.lee.app.domain.ProductPic">
-        SELECT a.* FROM
+        SELECT a.id,a.album_id albumId,a.pic FROM
 	        pms_album_pic a
         INNER JOIN pms_product b on a.album_id = b.album_id
         where b.id = #{id}

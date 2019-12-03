@@ -87,60 +87,60 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public Product getProductById(Long id) {
+            public Product getProductById(Long id,String token) {
                 System.out.println("商品详情展示熔断");
                 return null;
             }
 
             @Override
-            public List<Comment> getCommentByProductId(Long id) {
+            public List<Comment> getCommentByProductId(Long id,String token) {
                 System.out.println("商品评论展示熔断");
                 return null;
             }
 
             @Override
-            public List<Product> getLikePro(Long id) {
+            public List<Product> getLikePro(Long id,String token) {
                 System.out.println("类似商品展示熔断");
                 return null;
             }
 
             @Override
-            public List<Comment> selectTwoByProductId(Long id) {
+            public List<Comment> selectTwoByProductId(Long id,String token) {
                 System.out.println("商品两评论展示熔断");
                 return null;
             }
 
             @Override
-            public List<Product> getRecommandByShopId(Long shopId) {
+            public List<Product> getRecommandByShopId(Long shopId,String token) {
                 System.out.println("店铺推荐熔断");
                 return null;
             }
 
             @Override
-            public Integer insertReplay(Replay replay) {
+            public Integer insertReplay(Replay replay,String token) {
                 System.out.println("回复评论熔断");
                 return null;
             }
 
             @Override
-            public List<ProductPic> selectPicByShopId(Long id) {
+            public List<ProductPic> selectPicByShopId(Long id,String token) {
                 System.out.println("查询商店图片熔断");
                 return null;
             }
 
             @Override
-            public List<ProductParam> selectProductParam(Long id) {
+            public List<ProductParam> selectProductParam(Long id,String token) {
                 System.out.println("商品参数熔断");
                 return null;
             }
 
             @Override
-            public List<ProductPic> selectAlbumByProductId(Long id) {
+            public List<ProductPic> selectAlbumByProductId(Long id,String token) {
                 System.out.println("商品图片熔断");
                 return null;
             }
             @Override
-            public List<ProductCatG> getCategoryByShopId1(Long shopId) {
+            public List<ProductCatG> getCategoryByShopId1(Long shopId,String token) {
                 System.out.println("测试获取商品类目熔断数据");
                 return null;
             }
@@ -191,19 +191,19 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public List<Product> selectProducrByType(Long id) {
+            public List<Product> selectProducrByType(Long id,String token) {
                 System.out.println("根据商品类目获取商品熔断");
                 return null;
             }
 
             @Override
-            public List<Replay> selectReplay(Long commentId) {
+            public List<Replay> selectReplay(Long commentId,String token) {
                 System.out.println("查询回复熔断");
                 return null;
             }
 
             @Override
-            public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId) {
+            public List<CanTeenDateVo> getCanteenDateByShopId(Long ShopId,String token) {
                 System.out.println("进入"+"老杨根据店铺信息获取一级菜单以及商品信息Canteen数据"+"熔断方法");
                 return null;
             }

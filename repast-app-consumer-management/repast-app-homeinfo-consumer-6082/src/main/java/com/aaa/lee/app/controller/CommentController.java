@@ -29,8 +29,8 @@ public class CommentController extends BaseController {
      */
     @GetMapping("/getCommentByProductId")
     @ApiOperation(value = "商品评论", notes = "查询商品评论")
-    public ResultData getCommentByProductId(Long id){
-        List<Comment> commentByProductId = iRepastService.getCommentByProductId(id);
+    public ResultData getCommentByProductId(Long id ,String token){
+        List<Comment> commentByProductId = iRepastService.getCommentByProductId(id, token);
         if(commentByProductId.size()>0){
             return operationSuccess(commentByProductId);
         }
@@ -44,8 +44,8 @@ public class CommentController extends BaseController {
      */
     @GetMapping("/selectTwoByProductId")
     @ApiOperation(value = "商品评论", notes = "查询商品评论")
-    public ResultData selectTwoByProductId(Long id){
-        List<Comment> commentByProductId = iRepastService.selectTwoByProductId(id);
+    public ResultData selectTwoByProductId(Long id ,String token){
+        List<Comment> commentByProductId = iRepastService.selectTwoByProductId(id, token);
         if(commentByProductId.size()>0){
             return operationSuccess(commentByProductId);
         }
@@ -60,8 +60,8 @@ public class CommentController extends BaseController {
      */
     @PostMapping("/insertReplay")
     @ApiOperation(value="商品评论回复",notes="添加评论回复")
-    public ResultData insertReplay(Replay replay){
-        Integer integer = iRepastService.insertReplay(replay);
+    public ResultData insertReplay(Replay replay ,String token){
+        Integer integer = iRepastService.insertReplay(replay,token);
         if(integer>0){
             return operationSuccess();
         }
@@ -75,8 +75,8 @@ public class CommentController extends BaseController {
      */
     @GetMapping("/selectReplay")
     @ApiOperation(value="商品回复",notes="查询评论回复")
-    public ResultData selectReplay(Long commentId){
-        List<Replay> replays = iRepastService.selectReplay(commentId);
+    public ResultData selectReplay(Long commentId ,String token){
+        List<Replay> replays = iRepastService.selectReplay(commentId ,token);
         if(replays.size()>0){
             return operationSuccess(replays);
         }
