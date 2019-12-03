@@ -40,18 +40,4 @@ public class HotProductController extends BaseController {
         return failed();
     }
 
-    /**
-     * 通过商品id获取商品属性列表
-     * @return
-     */
-    @GetMapping("/getPac")
-    @ApiOperation(value = "商品属性", notes = "通过商品id获取商品属性列表")
-    public ResultData getPacByProductId(Long shopId){
-        List<ProductCategory> pacByProductId = repastService.getPacByProductId(shopId);
-        if (pacByProductId.size()>0){
-            return success(pacByProductId);
-        }
-        return null;
-    }
-
 }

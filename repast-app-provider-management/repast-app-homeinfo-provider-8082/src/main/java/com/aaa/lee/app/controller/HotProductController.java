@@ -36,10 +36,4 @@ public class HotProductController {
         return hotProduct;
     }
 
-    @GetMapping("/getPac")
-    public List<ProductCategory> getPacByProductId(@RequestParam("shopId") Long shopId){
-        List<ProductCategory> pacByProductId = pacByProductIdService.getPacByProductId(shopId);
-        return pacByProductId;
-    }
-
 }

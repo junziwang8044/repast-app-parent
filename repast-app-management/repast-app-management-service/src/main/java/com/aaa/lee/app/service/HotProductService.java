@@ -43,8 +43,4 @@ public class HotProductService extends BaseService<Product> {
         return null;
     }
 
-    public ProductCategory getPacByProductId(Long id){
-        return null;
-    }
-
 }

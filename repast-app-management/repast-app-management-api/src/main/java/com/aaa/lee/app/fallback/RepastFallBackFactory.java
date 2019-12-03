@@ -56,13 +56,6 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public List<ProductCategory> getPacByProductId(Long shopId) {
-                System.out.println("测试上平类目属性列表");
-                return null;
-            }
-
-
-            @Override
             public List<Product> getSearchHome(String name, String token) {
                 System.out.println("测试搜索首页商品");
                 return null;

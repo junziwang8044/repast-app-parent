@@ -25,6 +25,11 @@ public class ProductController {
     @Autowired
     private RedisService redisService;
 
+    /**
+     * 根据商品id查询评论
+     * @param id
+     * @return
+     */
     @GetMapping("/getCommentByProductId")
     public List<Comment> getCommentByProductId(@RequestParam("id") Long id) {
         List<Comment> comments = commentService.selectCommentByProductId(id);
@@ -34,6 +39,11 @@ public class ProductController {
         return null;
     }
 
+    /**
+     * 根据商品id查询评论(两条)
+     * @param id
+     * @return
+     */
     @GetMapping("/selectTwoByProductId")
     public List<Comment> selectTwoByProductId(@RequestParam("id") Long id) {
         List<Comment> twoComment = commentService.selectTwoByProductId(id);
@@ -52,6 +62,11 @@ public class ProductController {
         return productById;
     }
 
+    /**
+     * 根据商品id查询雷士商品
+     * @param id
+     * @return
+     */
     @GetMapping("/getLikePro")
     public List<Product> getLikePro(@RequestParam("id") Long id) {
         List<Product> likePro = productService.getLikePro(id);
