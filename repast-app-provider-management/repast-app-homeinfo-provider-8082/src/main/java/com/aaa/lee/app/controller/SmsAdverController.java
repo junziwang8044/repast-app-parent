@@ -22,9 +22,9 @@ public class SmsAdverController  extends BaseController {
 
 
     @GetMapping("/shopIdList")
-    public List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId){
+    public List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId,@RequestParam("token") String token){
 
-        return  smsAdverService.shopIdList(shopId);
+        return  smsAdverService.shopIdList(shopId,token);
 
     }
 

@@ -19,10 +19,14 @@ public class PmsProductService extends BaseService<PmsProduct> {
     }
 
 
-    public  List<PmsProduct> getSelectAll(Long brandId){
-        List<PmsProduct> productList = pmsProductMapper.getSelectAll(brandId);
-        if(productList.size() > 0) {
-            return productList;
+    public  List<PmsProduct> getSelectAll(Long brandId,String token) {
+
+        boolean b = super.selectToken(token);
+        if (b) {
+            List<PmsProduct> productList = pmsProductMapper.getSelectAll(brandId);
+            if (productList.size() > 0) {
+                return productList;
+            }
         }
         return null;
 

@@ -27,8 +27,8 @@ public class PmsProController {
      * @return
      */
     @GetMapping("/selectAll")
-    public List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId){
+    public List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId,@RequestParam("token") String token){
 
-        return pmsproductService.getSelectAll(brandId);
+        return pmsproductService.getSelectAll(brandId,token);
     }
 }

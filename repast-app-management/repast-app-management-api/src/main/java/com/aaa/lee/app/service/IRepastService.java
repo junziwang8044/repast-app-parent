@@ -124,13 +124,13 @@ public interface IRepastService {
      *      通过id查询商品上架下架和删除为删除的商品状态
      **/
     @GetMapping("/selectAll")
-    List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId);
+    List<PmsProduct> getSelectAll(@RequestParam("brandId") Long brandId,@RequestParam("token") String token);
 
     /**
      *      通过id查询查询以往搜索过的搜索历史（更多搜索历史）
      **/
     @GetMapping("/searchAll")
-    List<PmsCommentRe> searchAll(@RequestParam("id") Long id);
+    List<PmsCommentRe> searchAll(@RequestParam("id") Long id,@RequestParam("token") String token);
 
 
 
@@ -138,7 +138,7 @@ public interface IRepastService {
      *      通过id查询以往搜索过的搜索历史在搜索框下展示的以往的搜索历史展示一两条（搜索的一两条展示）
      **/
     @GetMapping("/showAll")
-    List<PmsCommentRe> showAll(@RequestParam("id") Long id);
+    List<PmsCommentRe> showAll(@RequestParam("id") Long id,@RequestParam("token") String token);
 
     /**
      * 通过商品id查询商品详情
@@ -273,7 +273,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/shopIdList")
-    List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId);
+    List<SmsAdver> shopIdList(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
     @GetMapping ("/getCanteenDateByShopId")
     List<CanTeenDateVo> getCanteenDateByShopId(@RequestParam("shopId") Long ShopId);

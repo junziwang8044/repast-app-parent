@@ -23,22 +23,31 @@ public class PmsCommentReService extends BaseService<PmsCommentRe> {
 
 
 
-    public List<PmsCommentRe> searchAll(Long id) {
-        List<PmsCommentRe> list = pmsCommentReMapper.searchAll(id);
-        if(list.size() > 0) {
-            return list;
+    public List<PmsCommentRe> searchAll(Long id,String token) {
+
+        boolean b = selectToken(token);
+        if (b) {
+            List<PmsCommentRe> list = pmsCommentReMapper.searchAll(id);
+            if (list.size() > 0) {
+                return list;
+            }
         }
         return null;
 
     }
 
-   public  List<PmsCommentRe> showAll(Long id){
-       List<PmsCommentRe> showAll = pmsCommentReMapper.showAll(id);
-       if (showAll.size() >0){
-           return showAll;
-       }else {
-           return null;
+   public  List<PmsCommentRe> showAll(Long id,String token){
+
+       boolean b = selectToken(token);
+       if (b) {
+           List<PmsCommentRe> showAll = pmsCommentReMapper.showAll(id);
+           if (showAll.size() > 0) {
+               return showAll;
+           } else {
+               return null;
+           }
        }
+       return null;
    }
 
 

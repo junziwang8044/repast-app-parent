@@ -48,10 +48,8 @@ public class SearchHomeController extends BaseController {
      */
     @GetMapping("/selectAll")
     @ApiOperation(value = "查询商品状态信息", notes = "执行查询商品类型操作，查询上架和未删除状态的商品")
-    public ResultData getSelectAll(Long brandId) {
-        List<PmsProduct> getSelectAll = repastService.getSelectAll(brandId);
-
-
+    public ResultData getSelectAll(Long brandId,String token) {
+        List<PmsProduct> getSelectAll = repastService.getSelectAll(brandId,token);
         if (getSelectAll.size() > 0) {
             return success(getSelectAll);
         } else {
@@ -66,8 +64,8 @@ public class SearchHomeController extends BaseController {
      */
     @GetMapping("/searchAll")
     @ApiOperation(value = "查询搜索历史(更多搜索历史)", notes = "查询搜索过的信息历史")
-    public ResultData searchAll(Long id){
-        List<PmsCommentRe> pmsCommentRes = repastService.searchAll(id);
+    public ResultData searchAll(Long id,String token){
+        List<PmsCommentRe> pmsCommentRes = repastService.searchAll(id,token);
         if (pmsCommentRes.size() > 0) {
             return success(pmsCommentRes);
         } else {
@@ -83,8 +81,8 @@ public class SearchHomeController extends BaseController {
      */
     @GetMapping("/showAll")
     @ApiOperation(value = "搜索框下展示的历史搜索", notes = "搜索框下展示的历史搜索，默认显示几条")
-    public  ResultData showAll(Long id){
-        List<PmsCommentRe> all = repastService.showAll(id);
+    public  ResultData showAll(Long id,String token){
+        List<PmsCommentRe> all = repastService.showAll(id,token);
         if (all.size() > 0){
             return success(all);
         }else {
@@ -94,8 +92,8 @@ public class SearchHomeController extends BaseController {
     }
     @GetMapping("/shopIdList")
     @ApiOperation(value = "查询店铺广告图片", notes = "根据id店铺为1的全部查询出来")
-    public  ResultData shopIdList(Long shopId){
-        List<SmsAdver> smsAdvers = repastService.shopIdList(shopId);
+    public  ResultData shopIdList(Long shopId,String token){
+        List<SmsAdver> smsAdvers = repastService.shopIdList(shopId,token);
         if (smsAdvers.size() > 0){
             return  success(smsAdvers);
         }else {

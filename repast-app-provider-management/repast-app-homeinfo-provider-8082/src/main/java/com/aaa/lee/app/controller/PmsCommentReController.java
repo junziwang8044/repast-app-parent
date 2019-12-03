@@ -22,9 +22,9 @@ public class PmsCommentReController {
      */
 
     @GetMapping("/searchAll")
-    public  List<PmsCommentRe> searchAll(@RequestParam("id") Long id){
+    public  List<PmsCommentRe> searchAll(@RequestParam("id") Long id,@RequestParam("token") String token){
 
-        return  pmsCommentReService.searchAll(id);
+        return  pmsCommentReService.searchAll(id,token);
 
     }
 
@@ -34,9 +34,9 @@ public class PmsCommentReController {
      * @return
      */
     @GetMapping("/showAll")
-    public  List<PmsCommentRe> showAll(@RequestParam("id") Long id){
+    public  List<PmsCommentRe> showAll(@RequestParam("id") Long id,@RequestParam("token") String token){
 
-        return  pmsCommentReService.showAll(id);
+        return  pmsCommentReService.showAll(id,token);
     }
 
 

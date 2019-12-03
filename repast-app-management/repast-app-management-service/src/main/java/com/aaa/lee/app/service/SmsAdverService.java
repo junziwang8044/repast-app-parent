@@ -21,7 +21,7 @@ public class SmsAdverService extends BaseService<SmsAdver> {
         return smsAdverMapper;
     }
 
-    public List<SmsAdver> shopIdList(Long shopId) {
+    public List<SmsAdver> shopIdList(Long shopId, String token) {
 
         List<SmsAdver> smsAdvers = smsAdverMapper.shopIdList(shopId);
         if (smsAdvers.size() > 0) {
