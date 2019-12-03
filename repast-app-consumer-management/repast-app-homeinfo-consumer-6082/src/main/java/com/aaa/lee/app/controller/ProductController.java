@@ -22,6 +22,11 @@ public class ProductController extends BaseController {
     @Autowired
     private IRepastService iRepastService;
 
+    /**
+     * 根据商品id查询商品详情
+     * @param id
+     * @return
+     */
     @GetMapping("/getProductById")
     @ApiOperation(value="商品详情",notes = "根据id查询商品详情")
     public ResultData getProductById(@RequestParam("id") Long id){
