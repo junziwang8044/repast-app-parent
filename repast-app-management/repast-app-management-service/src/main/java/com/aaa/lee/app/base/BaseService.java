@@ -212,8 +212,8 @@ public abstract class BaseService<T> {
      */
     public boolean selectToken(String token){
         if(null!=token) {
-            Member member = memberMapper.selectByToken(token);
-            if (null!=member){
+            String token1 = memberMapper.selectByToken(token);
+            if (null!=token1){
                 return true;
             }
         }
