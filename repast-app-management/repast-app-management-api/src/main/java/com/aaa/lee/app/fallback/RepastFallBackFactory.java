@@ -48,8 +48,9 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             public List<Product> getProductByShopId(Long shopId) {
                 return null;
             }
+
             @Override
-            public List<Product> getHotProduct(Long shopId) {
+            public List<Product> getHotProduct(Long shopId ,String token) {
                 System.out.println("测试热卖商品熔断数据");
                 return null;
             }

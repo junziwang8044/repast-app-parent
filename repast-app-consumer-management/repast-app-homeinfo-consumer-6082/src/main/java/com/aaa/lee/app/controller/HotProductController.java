@@ -32,12 +32,12 @@ public class HotProductController extends BaseController {
      */
     @GetMapping("/getHot")
     @ApiOperation(value = "热卖商品信息", notes = "通过店铺id获取热卖商品信息")
-    public ResultData getHotProduct(Long shopId){
-        List<Product> hotProduct = repastService.getHotProduct(shopId);
+    public ResultData getHotProduct(Long shopId ,String token){
+        List<Product> hotProduct = repastService.getHotProduct(shopId ,token);
         if (null != hotProduct){
             return success(hotProduct);
         }
-        return null;
+        return failed();
     }
 
     /**

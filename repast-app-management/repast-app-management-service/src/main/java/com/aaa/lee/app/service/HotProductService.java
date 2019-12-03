@@ -31,10 +31,14 @@ public class HotProductService extends BaseService<Product> {
      * 前台进入店铺通过店铺id获取热卖商品信息
      * @return
      */
-    public List<Product> getHotProduct(Long shopId){
-        List<Product> hotProducts = productMapper.selectAllHotProduct(shopId);
-        if (hotProducts.size()>0){
-            return hotProducts;
+    public List<Product> getHotProduct(Long shopId,String token){
+
+        boolean b = selectToken(token);
+        if (b){
+            List<Product> hotProducts = productMapper.selectAllHotProduct(shopId);
+            if (hotProducts.size()>0){
+                return hotProducts;
+            }
         }
         return null;
     }

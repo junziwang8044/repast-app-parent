@@ -90,7 +90,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getHot")
-    List<Product> getHotProduct(@RequestParam("shopId") Long shopId);
+    List<Product> getHotProduct(@RequestParam("shopId") Long shopId ,@RequestParam("token") String token);
 
     /**
      * 通过商品id获取商品属性列表

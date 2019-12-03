@@ -31,8 +31,8 @@ public class HotProductController {
      * @return
      */
     @GetMapping("/getHot")
-    public List<Product> getHotProduct(@RequestParam("shopId") Long shopId){
-        List<Product> hotProduct = hotProductService.getHotProduct(shopId);
+    public List<Product> getHotProduct(@RequestParam("shopId") Long shopId ,@RequestParam("token") String  token){
+        List<Product> hotProduct = hotProductService.getHotProduct(shopId,token);
         return hotProduct;
     }
 
