@@ -30,12 +30,14 @@ public class ShopInfoFacilityService extends BaseService<ShopInfoFacility> {
      * @param shopId
      * @return
      */
-    public List<ShopInfoFacility> getServerByShopId(Long shopId){
+    public List<ShopInfoFacility> getServerByShopId(Long shopId,String token){
+        boolean boo = selectToken(token);
+        if (boo){
         List<ShopInfoFacility> serverByShopId = shopInfoFacilityMapper.getServerByShopId(shopId);
         if (null != serverByShopId){
             return serverByShopId;
-        }else {
-            return null;
         }
+        }
+        return null;
     }
 }

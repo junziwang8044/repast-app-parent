@@ -38,8 +38,8 @@ public class ShopInfosController extends BaseController {
      * @return
      */
     @GetMapping("/getShopMsgById")
-    public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
-        return shopInfoService.getShopMsgById(shopId);
+    public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId,@RequestParam("token") String  token) {
+        return shopInfoService.getShopMsgById(shopId,token);
     }
 
     /**
@@ -48,8 +48,8 @@ public class ShopInfosController extends BaseController {
      * @return
      */
     @GetMapping("/touchShopByShopId")
-    public List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId){
-        List<ShopInfo> shopInfos = shopInfoService.touchShopByShopId(shopId);
+    public List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String  token){
+        List<ShopInfo> shopInfos = shopInfoService.touchShopByShopId(shopId,token);
         return shopInfos;
     }
     /**
@@ -58,8 +58,8 @@ public class ShopInfosController extends BaseController {
      * @return
      */
     @GetMapping("/getCateByShopId")
-    public List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId){
-        List<ProductCat> cateByShopId = productCatService.getCateByShopId(shopId);
+    public List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String  token){
+        List<ProductCat> cateByShopId = productCatService.getCateByShopId(shopId,token);
         return cateByShopId;
     }
     /**
@@ -68,9 +68,9 @@ public class ShopInfosController extends BaseController {
      * @return
      */
     @GetMapping("/getServerByShopId")
-    public List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId") Long shopId){
+    public List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String  token){
         try {
-            List<ShopInfoFacility> serverByShopId = shopInfoFacilityService.getServerByShopId(shopId);
+            List<ShopInfoFacility> serverByShopId = shopInfoFacilityService.getServerByShopId(shopId,token);
             if (serverByShopId.size()>0){
                 return serverByShopId;
             }
