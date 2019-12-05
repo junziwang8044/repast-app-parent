@@ -5,4 +5,5 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface DeleteHistorySearchMapper extends Mapper<DeleteHistorySearch> {
    int deleteHistorySearch(Long id);
+   int insertSearch(DeleteHistorySearch deleteHistorySearch);
 }

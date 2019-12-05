@@ -16,7 +16,7 @@ import java.util.List;
  * PROJECTnNAME:repast-app-parent
  */
 @Service
-public class HomeProductAdvertiseService extends BaseService<HomeProductAdvertiseVo> {
+public class HomeProductAdvertiseService extends BaseService<HomeProductAdvertiseVo>{
     @Autowired
     private HomeProductAdvertiseMapper homeProductAdvertiseMapper;
     @Override
