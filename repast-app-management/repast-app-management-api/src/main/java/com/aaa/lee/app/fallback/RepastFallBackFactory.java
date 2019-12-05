@@ -164,22 +164,22 @@ public class RepastFallBackFactory implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId) {
+            public ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId,@RequestParam("token") String token) {
                 System.out.println("商品详情熔断");
                 return null;
             }
             @Override
-            public List<ShopInfo> touchShopByShopId(Long shopId) {
+            public List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token) {
                 System.out.println("测试点击店铺信息熔断");
                 return null;
             }
             @Override
-            public List<ProductCat> getCateByShopId(Long shopId) {
+            public List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token) {
                 System.out.println("测试店铺内商品列熔断");
                 return null;
             }
             @Override
-            public List<ShopInfoFacility> getServerByShopId(Long shopId) {
+            public List<ShopInfoFacility> getServerByShopId(Long shopId,@RequestParam("token") String token) {
                 System.out.println("测试店铺服务熔断");
                 return null;
             }

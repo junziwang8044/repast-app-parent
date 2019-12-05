@@ -40,8 +40,8 @@ public class ShopInfosController extends BaseController {
      **/
     @GetMapping("/getShopMsgById")
     @ApiOperation(value = "商店信息", notes = "通过主键查询商家信息")
-    public ResultData getShopMsgById(@RequestParam("shopId")Long shopId) {
-        ShopInfo shopList = repastService.getShopMsgById(shopId);
+    public ResultData getShopMsgById(@RequestParam("shopId")Long shopId,@RequestParam("token") String token) {
+        ShopInfo shopList = repastService.getShopMsgById(shopId,token);
         if (null!=shopList){
             return success(shopList);
         }else{
@@ -54,8 +54,8 @@ public class ShopInfosController extends BaseController {
      */
     @GetMapping("/touchShopByShopId")
     @ApiOperation(value = "店铺信息",notes = "点击店铺获取店铺信息")
-    public ResultData touchShopByShopId(@RequestParam("shopId") Long shopId){
-        List<ShopInfo> shopInfos = repastService.touchShopByShopId(shopId);
+    public ResultData touchShopByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token){
+        List<ShopInfo> shopInfos = repastService.touchShopByShopId(shopId,token);
         if (null != shopInfos){
             return success(shopInfos) ;
         }else {
@@ -69,8 +69,8 @@ public class ShopInfosController extends BaseController {
      */
     @GetMapping("/getCateByShopId")
     @ApiOperation(value = "商品列信息(一级)",notes = "店铺内的商品列")
-    public ResultData getCateByShopId(@RequestParam("shopId") Long shopId){
-        List<ProductCat> cateByShopId = repastService.getCateByShopId(shopId);
+    public ResultData getCateByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token){
+        List<ProductCat> cateByShopId = repastService.getCateByShopId(shopId,token);
         if (null != cateByShopId){
             return success(cateByShopId);
         }else {
@@ -84,8 +84,8 @@ public class ShopInfosController extends BaseController {
      */
     @GetMapping("/getServerByShopId")
     @ApiOperation(value = "店铺的服务",notes = "通过店铺的主键查询店铺的服务")
-    public ResultData getServerByShopId(@RequestParam("shopId") Long shopId){
-        List<ShopInfoFacility> serverByShopId = repastService.getServerByShopId(shopId);
+    public ResultData getServerByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token){
+        List<ShopInfoFacility> serverByShopId = repastService.getServerByShopId(shopId,token);
         if (null != serverByShopId){
             return success(serverByShopId);
         }else {

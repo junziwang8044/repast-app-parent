@@ -238,19 +238,19 @@ public interface IRepastService {
      * @throws
      **/
     @GetMapping("/getShopMsgById")
-    ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId);
+    ShopInfo getShopMsgById(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
     /**
      * 点击店铺获取店铺信息
      */
     @GetMapping("/touchShopByShopId")
-    List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId);
+    List<ShopInfo> touchShopByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
     /**
      * 店铺内的商品列
      */
     @GetMapping("/getCateByShopId")
-    List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId);
+    List<ProductCat> getCateByShopId(@RequestParam("shopId") Long shopId,@RequestParam("token") String token);
 
     /**
      * 通过店铺主键查询店铺内提供的服务
@@ -258,7 +258,7 @@ public interface IRepastService {
      * @return
      */
     @GetMapping("/getServerByShopId")
-    List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId);
+    List<ShopInfoFacility> getServerByShopId(@RequestParam("shopId")Long shopId,@RequestParam("token") String token);
 
     /**
      * 根据店铺的id查询广告位的图片
