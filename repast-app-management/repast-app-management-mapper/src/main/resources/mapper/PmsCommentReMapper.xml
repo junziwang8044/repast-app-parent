@@ -6,10 +6,8 @@
       WARNING - @mbg.generated
     -->
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="comment_id" property="commentId" jdbcType="BIGINT" />
-    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
-    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
-
+    <result column="history_search_name" property="historySearchName" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="BIGINT" />
   </resultMap>
 
 
@@ -18,8 +16,8 @@
     -->
     <select id="searchAll" resultMap="BaseResultMap">
 
-         select  id,comment_id,member_nick_name,member_icon
-        from  pms_comment_replay
+         select  id,history_search_name,member_id
+        from  delete_history_search
 
 
     </select>
@@ -29,7 +27,7 @@
     -->
     <select id="showAll" resultMap="BaseResultMap">
 
-		select   id,comment_id,member_nick_name,member_icon  from pms_comment_replay
+		select   id,history_search_name,member_id  from delete_history_search
 		order by id desc limit 0,2
 
 
