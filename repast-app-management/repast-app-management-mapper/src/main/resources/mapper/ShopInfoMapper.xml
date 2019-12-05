@@ -37,6 +37,6 @@
     <select id="touchShopByShopId" parameterType="long" resultType="com.aaa.lee.app.domain.ShopInfo">
     select usi.id shopId, usi.name, usi.province, usi.city, usi.borough,
     usi.lng, usi.lat, usi.phone,usi.business_license,usi.food_license,usi.sanitation_license from ums_shop_information usi where usi.id = #{shopId}
-  </select>
+    </select>
 
 </mapper>

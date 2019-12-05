@@ -35,17 +35,27 @@ public class ShopInfoService extends BaseService<ShopInfo> {
      * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
      * @throws 
     **/
-    public ShopInfo getShopInfoByShopId(Long shopId) {
+    public ShopInfo getShopInfoByShopId(Long shopId,String token) {
+        boolean boo = selectToken(token);
+        if (boo){
         ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
         return shopInfoByShopId;
+        }
+        return null;
     }
 
     /**
      * 点击店铺，获取店铺信息
      */
-    public List<ShopInfo> touchShopByShopId(Long shopId){
-        List<ShopInfo> touchshopInfos = shopInfoMapper.touchShopByShopId(shopId);
-        return touchshopInfos;
+    public List<ShopInfo> touchShopByShopId(Long shopId,String token){
+        boolean boo = selectToken(token);
+        if (boo) {
+            List<ShopInfo> touchshopInfos = shopInfoMapper.touchShopByShopId(shopId);
+            if (touchshopInfos.size() > 0) {
+                return touchshopInfos;
+            }
+        }
+        return null;
     }
     /**
      * @author hxx
@@ -56,9 +66,13 @@ public class ShopInfoService extends BaseService<ShopInfo> {
      * @return java.util.List<com.aaa.lee.app.vo.ShopInfoVo>
      * @throws
      **/
-    public ShopInfo getShopMsgById(Long shopId) {
-        ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
-        return shopInfoByShopId;
+    public ShopInfo getShopMsgById(Long shopId,String token) {
+        boolean boo = selectToken(token);
+        if (boo) {
+            ShopInfo shopInfoByShopId = shopInfoMapper.getShopInfoByShopId(shopId);
+            return shopInfoByShopId;
+        }
+        return null;
     }
 
 }

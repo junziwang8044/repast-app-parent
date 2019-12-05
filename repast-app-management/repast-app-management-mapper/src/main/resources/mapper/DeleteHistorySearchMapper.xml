@@ -6,7 +6,10 @@
     <result column="history_search_name" property="historySearchName" jdbcType="VARCHAR" />
     <result column="member_id" property="memberId" jdbcType="BIGINT" />
   </resultMap>
-  <delete id="deleteHistorySearch" parameterType="long">
+    <insert id="insertSearch" parameterType="com.aaa.lee.app.domain.DeleteHistorySearch">
+      INSERT INTO delete_history_search(history_search_name,member_id) VALUES(#{historySearchName},#{memberId})
+    </insert>
+    <delete id="deleteHistorySearch" parameterType="long">
     DELETE FROM delete_history_search WHERE member_id=#{id}
   </delete>
 

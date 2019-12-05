@@ -31,10 +31,13 @@ public class ProductCatService extends BaseService<ProductCat> {
      * @param shopId
      * @return
      */
-    public List<ProductCat> getCateByShopId(Long shopId){
-        List<ProductCat> productCats = productCatMapper.getCateByShopId(shopId);
-        if (productCats.size()>0){
-            return productCats;
+    public List<ProductCat> getCateByShopId(Long shopId,String token){
+        boolean boo = selectToken(token);
+        if (boo) {
+            List<ProductCat> productCats = productCatMapper.getCateByShopId(shopId);
+            if (productCats.size() > 0) {
+                return productCats;
+            }
         }
         return null;
     }
